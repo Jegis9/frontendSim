@@ -1,0 +1,8 @@
+body {
+    background-color: #1C1D1F;
+  }
+  
+  /* Para un elemento específico, reemplaza .elemento-especifico con la clase o ID correcto */
+  .elemento-especifico {
+    background-color: #1C1D1F;
+  }

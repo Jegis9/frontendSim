@@ -1,0 +1,31 @@
+.button {
+    text-align: center; /* Alineación del texto */
+    display: inline-block; /* Permite aplicar márgenes */
+    padding: 10px 20px; /* Tamaño apropiado para botones */
+    margin: 0 10px; /* Espacio horizontal entre botones */
+  }
+  
+  .buttons {
+    padding: 50px;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%); /* Centra los botones horizontalmente */
+    display: flex;
+    flex-wrap: nowrap;
+    bottom: 0; /* Alineado en la parte inferior */
+    width: 100%; /* Ocupa el ancho del contenedor */
+    justify-content: space-between; /* Separa los botones a los extremos */
+    position: relative; /* Permite posicionar los botones */
+  }
+  
+  
+  @media (max-width: 768px) {
+    .buttons {
+      position: static; /* Elimina el posicionamiento absoluto */
+      transform: none;
+      margin-top: 20px; /* Agrega espacio por encima de los botones */
+      flex-direction: column; /* Coloca los botones en una columna */
+      align-items: center; /* Centra los botones */
+    }
+  }
+  

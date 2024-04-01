@@ -1,0 +1,113 @@
+.logo {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+  }
+  .logo img {
+    max-width: 15%; /* Ajusta el tamaño máximo de la imagen para que se ajuste al contenedor */
+    height: auto; /* Mantiene la proporción de aspecto de la imagen */
+  }
+  
+  .title{
+    color: white;
+    padding: 0px;
+    position: center;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    font-size: 550%;
+    
+  }
+  
+  .edition{
+    color: white;
+    padding: 0px;
+    position: center;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    font-size: 550%;
+  }
+  
+  .slogan{
+    color: white;
+    padding: 0px;
+    position: center;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    font-size: 190%;
+    margin: 2%;
+  }
+  
+  .date{
+    color: white;
+    padding: 0px;
+    position: center;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    font-size: 150%;
+  }
+
+  
+  @media (max-width: 768px) {
+    .buttons {
+      position: static; /* Elimina el posicionamiento absoluto */
+      transform: none;
+      margin-top: 20px; /* Agrega espacio por encima de los botones */
+      flex-direction: column; /* Coloca los botones en una columna */
+      align-items: center; /* Centra los botones */
+    }
+  }
+  
+  .title, .edition {
+    color: white; /* Color base del texto. */
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    /* Asegúrate de que el color de fondo del contenedor no afecte el brillo */
+    background: transparent;
+  }
+  
+  /* Estilo base para el efecto de neón con pseudo-elementos */
+  .title::after, .edition::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: transparent; /* Hacer el texto transparente para mostrar solo el brillo */
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+    z-index: -1;
+    overflow: hidden;
+    /* Aplica un desenfoque al brillo para suavizarlo, ajusta el valor según sea necesario */
+    filter: blur(8px);
+  }
+  
+  /* Animación de neón */
+  @keyframes neon-light {
+    0%, 100% {
+      opacity: 0.7; /* Ajustar la opacidad para un efecto más realista */
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  .title::after, .edition::after {
+    animation: neon-light 3s linear infinite;
+  }
+  
+  .sections-container {
+    margin-top: 50px; /* Ajusta esto según la altura de tus botones */
+    padding-bottom: 50px; /* Ajusta esto para dar espacio al final de la página */
+    background-color:#1C1D1F ;
+  }
+  
+  

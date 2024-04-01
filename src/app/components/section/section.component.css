@@ -1,0 +1,25 @@
+
+  
+.title{
+    color: white;
+    padding: 0px;
+    position: center;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    font-size: 550%;
+    
+  }
+  
+p{
+    color: white;
+    padding: 0px;
+    position: center;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    font-size: 300%;
+    
+}

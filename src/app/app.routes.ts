@@ -8,11 +8,11 @@ import { RegistropagoComponent } from './components/registropago/registropago.co
 
 export const routes: Routes = [
  
+    { path: '', redirectTo: '/inicio', pathMatch:'full' },
     { path: 'inicio', component: InicioComponent },
     { path: 'registro', component: RegistroComponent },
     { path: 'detalle', component: DetallepComponent },
     { path: 'registropago', component: RegistropagoComponent },
     { path: 'administracion', component: AdministracionComponent },
-
 
 ];

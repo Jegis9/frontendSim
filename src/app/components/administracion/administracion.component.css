@@ -1,3 +1,32 @@
-p{
-    background-color: blue;
+.logo {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+  }
+  .logo img {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    max-width: 50%; /* Ajusta el tamaño máximo de la imagen para que se ajuste al contenedor */
+    height: auto; /* Mantiene la proporción de aspecto de la imagen */
+  }
+
+label,input,h2{
+    margin-top: 5%;
+    color: white;
+}
+input{
+    width: 40%;
+}
+.formulario{
+    margin-top: 10%;
+}
+
+button{
+    background-color: green;
+    color: white;
+}
+
+button:hover{
+    border: 1px solid green;
+    color: white;
 }

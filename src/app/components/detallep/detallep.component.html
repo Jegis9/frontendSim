@@ -1,1 +1,59 @@
-<p>detallep works!</p>
+
+
+
+<form>
+    <div class="row mt-0">
+        <div class="col-md-12 ">
+            <div class="logo">
+                <img src="assets/Image/logoUMG.png" alt="Logo SIM'24">
+            </div>
+            <h4 >Detalle de pago</h4>
+            <p>A continuacion selecciona tus productos y genera boleta y registro de pago. </p>
+        </div>
+        </div>
+        <hr>
+        <label for="exampleInputCarnet" class="col-sm-2 col-form-label">Carné</label>
+        <div class="mb-3 row">
+            
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm text-center" id="exampleInputCarnet1">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm text-center" id="exampleInputCarnet2">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm text-center" id="exampleInputCarnet3">
+            </div>
+        </div>
+        <h4>Registro de pago</h4>
+    <div class="mb-3">
+        <label for="merchandise">Merchandising:</label>
+        <select id="merchandise" name="merchandise">
+            <option value="none">Selecciona un artículo</option>
+            <option value="sombrero">Sombrero</option>
+            <option value="vaso">Vaso</option>
+            <option value="gorra">Gorra</option>
+        </select>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="quantity">Cantidad:</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="10" ><br>
+    </div>
+    <div class="mb-3 text-center">
+        <button type="submit" class="btn btn-primary">Agregar</button>
+    </div>
+    <div class="mb-3 text-center">
+    <div id="pdf-content">
+        <h2 class="titleas">Artículos Seleccionados:</h2>
+        <ol id="selected-items"></ol>
+        <p>Total General: <span id="total"></span></p>
+    </div>
+    </div>
+
+
+    <div class="mb-3 text-center">
+        <button type="submit" class="btn btn-primary">Registrar pago</button>
+    </div>
+</form>

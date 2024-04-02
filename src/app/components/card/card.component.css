@@ -1,7 +1,16 @@
 .card{
     background-color: #1C1D1F;
+    border-color: white;
+    text-align: justify;
+    border-radius: 20px;
+    align-items: center;
 }
 
 .card-title{
     color: white;
 }
+
+.card-text{
+    color: white;
+}
+

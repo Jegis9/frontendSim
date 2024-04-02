@@ -1,0 +1,18 @@
+.accordion{
+    --bs-accordion-btn-bg: black;
+    --bs-accordion-btn-color: white;
+    --bs-accordion-active-bg: green;
+    --bs-accordion-active-color: white;
+    --bs-accordion-btn-focus-box-shadow:none;
+    --bs-accordion-bg: black;
+    --bs-accordion-color: white;
+    --bs-accordion-btn-focus-border-color: unset;
+    --bs-accordion-button-color: white;
+}
+
+.accordion-button:not(.collapsed){
+    box-shadow: none;
+}
+.accordion-button{
+    border-top: 1px solid greenyellow;
+}

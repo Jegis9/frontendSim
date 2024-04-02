@@ -8,18 +8,18 @@
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
-    font-size: 550%;
+    font-size: 200%;
     
   }
   
 p{
     color: white;
-    padding: 0px;
+    padding: 5px;
     position: center;
-    text-align: center;
+    text-align: center,justify;
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
-    font-size: 300%;
+    font-size: 150%;
     
 }

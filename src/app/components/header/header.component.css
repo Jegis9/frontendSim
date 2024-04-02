@@ -4,7 +4,9 @@
     align-items: center; /* Centra verticalmente */
   }
   .logo img {
-    max-width: 15%; /* Ajusta el tamaño máximo de la imagen para que se ajuste al contenedor */
+    margin-top: 5%;
+    margin-bottom: 5%;
+    max-width: 20%; /* Ajusta el tamaño máximo de la imagen para que se ajuste al contenedor */
     height: auto; /* Mantiene la proporción de aspecto de la imagen */
   }
   

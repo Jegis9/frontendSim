@@ -3,30 +3,52 @@
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
   }
-  .logo img {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    max-width: 50%; /* Ajusta el tamaño máximo de la imagen para que se ajuste al contenedor */
-    height: auto; /* Mantiene la proporción de aspecto de la imagen */
-  }
+
+.logo img {
+margin-top: 10px;
+margin-bottom: 15px;
+max-width: 30%; /* Ajusta el tamaño máximo de la imagen para que se ajuste al contenedor */
+height: auto; /* Mantiene la proporción de aspecto de la imagen */
+}
+
+.container{
+    width: 35%;
+    padding-top: 45px;
+}
+
+form{
+    margin: auto;
+}
 
 label,input,h2{
-    margin-top: 5%;
     color: white;
 }
-input{
-    width: 40%;
-}
-.formulario{
-    margin-top: 10%;
+
+label{
+    font-size: 20px;
 }
 
 button{
     background-color: green;
     color: white;
+    margin: auto;
 }
 
 button:hover{
     border: 1px solid green;
     color: white;
 }
+
+/* Para tablets: ancho de pantalla hasta 768px */
+@media (max-width: 768px) {
+    .container {
+        width: 70%;
+    }
+  }
+  
+  /* Para celulares: ancho de pantalla hasta 480px */
+  @media (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
+  }

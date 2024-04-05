@@ -1,0 +1,35 @@
+.container-table {
+    margin: 0 auto; /* Esto centra el div horizontalmente */
+    width: 50%; /* Ajusta el ancho del div según tus necesidades */
+}
+th{
+    background-color: gray;
+}
+
+h1{
+    color: aliceblue;
+    text-align: center;
+    margin-top: 2%;
+}
+#pdf{
+    background-color: red;
+    color: aliceblue;
+}
+#excel{
+    background-color: green;
+    color: aliceblue;
+}
+.container-buttons {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 50%
+}
+
+.left {
+    margin-right: auto; /* Empuja el botón a la izquierda */
+}
+
+.right {
+    margin-left: auto; /* Empuja el botón a la derecha */
+}

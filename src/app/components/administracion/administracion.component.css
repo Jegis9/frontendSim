@@ -39,6 +39,13 @@ button:hover{
     color: white;
 }
 
+/* Para laptops: ancho de pantalla hasta 1024px */
+@media (max-width: 1024px) {
+    form {
+        width: 50%;
+    }
+  }
+
 /* Para tablets: ancho de pantalla hasta 768px */
 @media (max-width: 768px) {
     .container {

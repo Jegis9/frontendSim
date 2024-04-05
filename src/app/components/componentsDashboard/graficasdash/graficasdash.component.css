@@ -1,0 +1,36 @@
+.flex {
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
+}
+
+.flex > div {
+    flex: 1; /* Hace que los divs ocupen el mismo espacio */
+    margin: 2%; /* Añade espacio entre los divs */
+}
+
+
+.a {
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    background-color: red;
+    color: aliceblue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

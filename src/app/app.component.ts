@@ -18,6 +18,7 @@ export class AppComponent {
   isDashboardPage(): boolean {
     return this.router.url.includes('/dashboards');
   }
+  
 }
 
 

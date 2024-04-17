@@ -1,67 +1,51 @@
-
-<h1>Personas registradas al evento</h1>
-
-<div class="container-buttons">
-  <button id="pdf">Descargar PDF</button>
-  <button id="excel">Descargar EXCEL</button>
-</div>
-  <div class="container-table">
-    <label for="exampleInput" class="form-label">Email address</label>
-    <input type="text" class="form-control" placeholder="BUSCAR AQUI">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-<div class="container-table">
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col ">ID PERSONA</th>
-        <th scope="col">CARNET</th>
-        <th scope="col">NOMBRE</th>
-        <th scope="col">APELLIDO</th>
-        <th scope="col">FECHA NACIMIENTO</th>
-        <th scope="col">CORREO ELECTRONICO</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-     
-        <td>1</td>
-        <td>4546546464</td>
-        <td>LUIS </td>
-        <td>CAYAX</td>
-        <td>25-02-1998</td>
-        <td>luisGmail.com</td>
-      </tr>
-      <tr>
+<div class="container-flex">
+  <app-slidebar></app-slidebar>
+  <div class="container-content">
+    <h1>Personas registradas al evento</h1>
+    <div class="container-buttons">
+      <button id="pdf">Descargar PDF</button>
+      <button id="excel">Descargar EXCEL</button>
+    </div>
+    <div class="container-table">
+      <label for="exampleInput" class="form-label">Email address</label>
+      <input type="text" class="form-control" placeholder="BUSCAR AQUI">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="container-table">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID PERSONA</th>
+            <th scope="col">CARNET</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">APELLIDO</th>
+            <th scope="col">FECHA NACIMIENTO</th>
+            <th scope="col">CORREO ELECTRONICO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
             <td>1</td>
-        <td>4546546464</td>
-        <td>LUIS </td>
-        <td>CAYAX</td>
-        <td>25-02-1998</td>
-        <td>luisGmail.com</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>4546546464</td>
-        <td>LUIS </td>
-        <td>CAYAX</td>
-        <td>25-02-1998</td>
-        <td>luisGmail.com</td>
-      </tr>
-    </tbody>
-  </table>
+            <td>4546546464</td>
+            <td>LUIS</td>
+            <td>CAYAX</td>
+            <td>25-02-1998</td>
+            <td>luis.com</td>
+          </tr>
+          <!-- Agregar más filas según sea necesario -->
+        </tbody>
+      </table>
+    </div>
+    <div class="container-table">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </div>
-
-<div class="container-table">
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav>
-</div>
-
-<app-slidebar></app-slidebar>

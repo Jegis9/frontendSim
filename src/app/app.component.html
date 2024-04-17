@@ -1,6 +1,7 @@
 
-<app-nav-bar *ngIf="!isDashboardPage()"></app-nav-bar>
+<app-nav-bar *ngIf="!isDashboardPage() "></app-nav-bar>
 <router-outlet></router-outlet>
 <div *ngIf="isDashboardPage()">
   <app-slidebar></app-slidebar>
+
 </div>

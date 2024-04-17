@@ -33,3 +33,19 @@ h1{
 .right {
     margin-left: auto; /* Empuja el botón a la derecha */
 }
+
+
+
+
+
+.container-flex {
+  display: flex;
+}
+
+.container-sidebar {
+  width: 30%; /* Por ejemplo, puedes ajustar el ancho según tus necesidades */
+}
+
+.container-content {
+  flex: 1;
+}

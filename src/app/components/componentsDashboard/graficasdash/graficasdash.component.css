@@ -1,32 +1,54 @@
-.flex {
-    display: flex;
-    justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
+.container-table {
+    margin: 0 auto; /* Esto centra el div horizontalmente */
+    width: 50%; /* Ajusta el ancho del div según tus necesidades */
+}
+th{
+    background-color: gray;
 }
 
-.flex > div {
-    flex: 1; /* Hace que los divs ocupen el mismo espacio */
-    margin: 2%; /* Añade espacio entre los divs */
+h1{
+    color: aliceblue;
+    text-align: center;
+    margin-top: 2%;
 }
-
-
-.a {
-    display: flex;
-    justify-content: center;
-}
-
-button{
+#pdf{
     background-color: red;
     color: aliceblue;
 }
+#excel{
+    background-color: green;
+    color: aliceblue;
+}
+.container-buttons {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 50%
+}
+
+.left {
+    margin-right: auto; /* Empuja el botón a la izquierda */
+}
+
+.right {
+    margin-left: auto; /* Empuja el botón a la derecha */
+}
 
 
 
 
 
+.container-flex {
+  display: flex;
+}
 
+.container-sidebar {
+  width: 30%; /* Por ejemplo, puedes ajustar el ancho según tus necesidades */
+}
 
-
-
+.container-content {
+  flex: 1;
+}
 
 
 

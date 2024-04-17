@@ -11,7 +11,7 @@ export class AdministracionComponent {
   constructor(private router: Router) { }
 
   redirectToDashboard() {
-    this.router.navigate(['/dashboards']);
+    this.router.navigate(['/graficas']);
   }
 
 }

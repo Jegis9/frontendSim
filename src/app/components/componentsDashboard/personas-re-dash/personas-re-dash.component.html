@@ -21,20 +21,19 @@
             <th scope="col">APELLIDO</th>
             <th scope="col">FECHA NACIMIENTO</th>
             <th scope="col">CORREO ELECTRONICO</th>
-
-            
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>4546546464</td>
-            <td>LUIS</td>
-            <td>CAYAX</td>
-            <td>25-02-1998</td>
-            <td>luis.com</td>
-          </tr>
-          <!-- Agregar más filas según sea necesario -->
+          @for (item of personas; track item.id) {
+            <tr>
+              <td>{{item.id}}</td>
+              <td>{{item.carnet}}</td>
+              <td>{{item.nombres}}</td>
+              <td>{{item.apellidos}}</td>
+              <td>{{item.fechaNacimiento}}</td>
+              <td>{{item.correo}}</td>
+            </tr>
+          }
         </tbody>
       </table>
     </div>
@@ -51,3 +50,4 @@
     </div>
   </div>
 </div>
+

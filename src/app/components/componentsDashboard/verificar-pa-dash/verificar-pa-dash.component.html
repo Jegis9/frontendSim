@@ -22,104 +22,32 @@
             <th scope="col">NOMBRE</th>
             <th scope="col">APELLIDO</th>
             <th scope="col">MONTO A PAGAR</th>
-            <th scope="col">NO. PAGO</th>
-            <th scope="col">FOTO </th>
+   
+          
+            <th scope="col">FECHA Y HORA </th>
             <th scope="col" colspan="2">OPCIONES</th>
             
           </tr>
         </thead>
         <tbody>
+          @for (item of pagos; track item.id) {
           <tr>
          
-            <td>1</td>
-            <td>4546546464</td>
-            <td>LUIS </td>
-            <td>CAYAX</td>
-            <td>Q. 500.00</td>
-            <td>4334 432</td>
-            <td>
-    
-    
-            <button style="padding: 0; border: none; background: none;">
-                <img src="assets/Image/Camera_Next_30014.ico" alt="" style="width: 30%; height: 30%;">
-            </button>
-        </td>
-            <td>
-    
-                <button style="padding: 0; border: none; background: none;">
-                    <img src="assets/Image/Good_or_Tick_36889.ico" alt="" style="width: 30%; height: 30%;">
-                </button>
-                
-    
-           
-                
-            </td>
-            <td>
-                <button style="padding: 0; border: none; background: none;">
-                    <img src="assets/Image/remove_delete_exit_close_1545.ico" alt="" style="width: 30%; height: 30%;">
-                </button>
-            </td>
+            <td>{{item.id}}</td>
+            <td>{{item.participante.carnet}}</td>
+            <td>{{item.participante.nombres}}</td>
+            <td>{{item.participante.apellidos}}</td>
+            <td>Q{{item.monto}}.00</td>
+            <td>{{item.fechaHora}}</td>
+            <td><a href="">{{item.verificado}}</a></td>
+            <td><a href="">{{item.imagenBoleta}}</a> </td>
+   
+      
+          
           </tr>
-          <tr>
-            <td>1</td>
-            <td>4546546464</td>
-            <td>LUIS </td>
-            <td>CAYAX</td>
-            <td>Q. 500.00</td>
-            <td>4334 432</td>
-            <td>
-    
-    
-                <button style="padding: 0; border: none; background: none;">
-                    <img src="assets/Image/Camera_Next_30014.ico" alt="" style="width: 30%; height: 30%;">
-                </button>
-            </td>
-                <td>
-        
-                    <button style="padding: 0; border: none; background: none;">
-                        <img src="assets/Image/Good_or_Tick_36889.ico" alt="" style="width: 30%; height: 30%;">
-                    </button>
-                    
-        
-               
-                    
-                </td>
-                <td>
-                    <button style="padding: 0; border: none; background: none;">
-                        <img src="assets/Image/remove_delete_exit_close_1545.ico" alt="" style="width: 30%; height: 30%;">
-                    </button>
-                </td>      
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>4546546464</td>
-            <td>LUIS </td>
-            <td>CAYAX</td>
-            <td>Q. 500.00</td>
-            <td>4334 432</td>
-            <td>
-    
-    
-                <button style="padding: 0; border: none; background: none;">
-                    <img src="assets/Image/Camera_Next_30014.ico" alt="" style="width: 30%; height: 30%;">
-                </button>
-            </td>
-                <td>
-        
-                    <button style="padding: 0; border: none; background: none;">
-                        <img src="assets/Image/Good_or_Tick_36889.ico" alt="" style="width: 30%; height: 30%;">
-                    </button>
-                    
-        
-               
-                    
-                </td>
-                <td>
-                    <button style="padding: 0; border: none; background: none;">
-                        <img src="assets/Image/remove_delete_exit_close_1545.ico" alt="" style="width: 30%; height: 30%;">
-                    </button>
-                </td>
-          </tr>
+        }
+
+       
         </tbody>
       </table>
     </div>

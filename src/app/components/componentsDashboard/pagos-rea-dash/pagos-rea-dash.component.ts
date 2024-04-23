@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit,inject } from '@angular/core';
 import { SlidebarComponent } from '../slidebar/slidebar.component';
+import { PagosService } from '../../../services/pagos/pagos.service';
 
 @Component({
   selector: 'app-pagos-rea-dash',
@@ -9,5 +10,6 @@ import { SlidebarComponent } from '../slidebar/slidebar.component';
   styleUrl: './pagos-rea-dash.component.css'
 })
 export class PagosReaDashComponent {
+
 
 }

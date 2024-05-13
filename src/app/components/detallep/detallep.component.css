@@ -23,6 +23,10 @@ form {
     margin-top: 5%;
     padding: 20px; /* Agrega un espacio entre el borde y los campos */
 }
+img{
+  width: 50%;
+  height: 50%;
+}
 
 button {
     background-color: green;
@@ -34,6 +38,10 @@ button:hover{
 }
 label, input {
     margin-bottom: 10px; /* Agrega un margen entre los campos */
+}
+
+.playeraInput{
+  background-color: gray;
 }
 hr{
     color: greenyellow;

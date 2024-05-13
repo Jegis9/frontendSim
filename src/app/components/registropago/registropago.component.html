@@ -1,38 +1,33 @@
-
 <form >
     <div class="row mt-0">
         <div class="col-md-12 ">
             <div class="logo">
                 <img src="assets/Image/logoUMG.png" alt="Logo SIM'24">
             </div>
-        <h4 >Registro de pago</h4>
-        <p>A continuacion ingresa tus datos para registrar pago. </p>
+            <h4 >Registro de pago</h4>
+            <p>A continuación ingresa tus datos para registrar el pago.</p>
+        </div>
+    </div>
+    <hr>
+    <div class="mb-3 row">
+        <div class="col-sm-4">
+            <input type="text" class="form-control form-control-sm text-center" id="Carnet1" formControlName="carnet">
+        </div>
+        <div class="col-sm-4">
+            <input type="text" class="form-control form-control-sm text-center" id="Carnet2">
+        </div>
+        <div class="col-sm-4">
+            <input type="text" class="form-control form-control-sm text-center" id="Carnet3">
         </div>
         </div>
-        <hr>
-        <label for="exampleInputCarnet" class="col-sm-2 col-form-label">Carné</label>
-        <div class="mb-3 row">
-            
-            <div class="col-sm-4">
-                <input type="text" class="form-control form-control-sm text-center" id="exampleInputCarnet1">
-            </div>
-            <!-- <div class="col-sm-4">
-                <input type="text" class="form-control form-control-sm text-center" id="exampleInputCarnet2">
-            </div>
-            <div class="col-sm-4">
-                <input type="text" class="form-control form-control-sm text-center" id="exampleInputCarnet3">
-            </div> -->
-        </div>
-        <h4>Registro de pago</h4>
     <div class="mb-3">
         <label for="exampleInputPago" class="form-label">Numero de pago</label>
-        <input type="number" class="form-control form-control-sm text-center" id="exampleInputNombre">
+        <input type="number" class="form-control form-control-sm text-center" id="exampleInputNombre" formControlName="numeropago">
     </div>
-
-
     <div class="mb-3">
-        <label for="exampleInputFile" class="form-label">Fecha de Nacimiento</label>
-        <input type="file" class="form-control form-control-sm text-center" id="exampleInputFile">
+        <label for="exampleInputFile" class="form-label">Imagen</label>
+        <input type="file" class="form-control form-control-sm text-center" id="exampleInputFile" formControlName="imagen" >
+
     </div>
     <div class="mb-3 text-center">
         <button type="submit" class="btn btn-primary">Registrar pago</button>

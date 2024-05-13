@@ -1,7 +1,6 @@
 
 
-
-<form>
+<form [formGroup]="form" (ngSubmit)="create()">
     <div class="row mt-0">
         <div class="col-md-12 ">
             <div class="logo">
@@ -14,46 +13,60 @@
         <hr>
         <label for="exampleInputCarnet" class="col-sm-2 col-form-label">Carné</label>
         <div class="mb-3 row">
+            <input type="text" class="form-control form-control-sm text-center" id="Carnet" formControlName="carnet">
+       
+            </div>
+        <h4>Merchadising</h4>
+        <div class="mb-3">  
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Imagen</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let item of merchadising; trackBy: trackByFn">
+                        <tr>
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.nombre }}</td>
+                            <td  >{{ item.precio }}</td>
+                            <td><img [src]="item.imagen" alt=""></td>
+                            <td>
+                                <input *ngIf="item.nombre === 'Playera UMG'" type="number" id="cantidad-{{item.id}}" class="playeraInput" min="1" max="10" value="1" readonly>
+                                <input *ngIf="item.nombre !== 'Playera UMG'" type="number" id="cantidad-{{item.id}}" min="1" max="10">
+                                <ng-container *ngIf="item.nombre === 'Playera UMG'">
+                                    <select id="talla-{{item.id}}" formControlName="talla">
+                                        <option value="">Selecciona una talla</option>
+                                        <option *ngFor="let talla of item.opciones" [value]="talla">{{ talla }}</option>
+                                      </select>
+                                      
+                                </ng-container>
+                            </td>
+                            
+                            
+                        </tr>
+                    </ng-container>
+
+
+
+
+
+
+
+
+
+                    
+                </tbody>
+            </table>
             
-            <div class="col-sm-4">
-                <input type="text" class="form-control form-control-sm text-center" id="exampleInputCarnet1">
-            </div>
-            <div class="col-sm-4">
-                <input type="text" class="form-control form-control-sm text-center" id="exampleInputCarnet2">
-            </div>
-            <div class="col-sm-4">
-                <input type="text" class="form-control form-control-sm text-center" id="exampleInputCarnet3">
-            </div>
         </div>
-        <h4>Registro de pago</h4>
-    <div class="mb-3">
-        <label for="merchandise">Merchandising:</label>
-        <select id="merchandise" name="merchandise">
-            <option value="none">Selecciona un artículo</option>
-            <option value="sombrero">Sombrero</option>
-            <option value="vaso">Vaso</option>
-            <option value="gorra">Gorra</option>
-        </select>
-    </div>
 
-
-    <div class="mb-3">
-        <label for="quantity">Cantidad:</label>
-        <input type="number" id="quantity" name="quantity" min="1" max="10" ><br>
-    </div>
+        
     <div class="mb-3 text-center">
-        <button type="submit" class="btn btn-primary">Agregar</button>
-    </div>
-    <div class="mb-3 text-center">
-    <div id="pdf-content">
-        <h2 class="titleas">Artículos Seleccionados:</h2>
-        <ol id="selected-items"></ol>
-        <p>Total General: <span id="total"></span></p>
-    </div>
-    </div>
-
-
-    <div class="mb-3 text-center">
-        <button type="submit" class="btn btn-primary">Registrar pago</button>
+        <button type="submit" class="btn btn-primary">Generar detalle</button>
     </div>
 </form>

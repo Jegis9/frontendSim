@@ -13,8 +13,15 @@
         <hr>
         <label for="exampleInputCarnet" class="col-sm-2 col-form-label">Carné</label>
         <div class="mb-3 row">
-            <input type="text" class="form-control form-control-sm text-center" id="Carnet" formControlName="carnet">
-       
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm text-center" id="Carnet1" formControlName="carnet">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm text-center" id="Carnet2">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm text-center" id="Carnet3">
+            </div>
             </div>
         <h4>Merchadising</h4>
         <div class="mb-3">  
@@ -37,7 +44,7 @@
                             <td><img [src]="item.imagen" alt=""></td>
                             <td>
                                 <input *ngIf="item.nombre === 'Playera UMG'" type="number" id="cantidad-{{item.id}}" class="playeraInput" min="1" max="10" value="1" readonly>
-                                <input *ngIf="item.nombre !== 'Playera UMG'" type="number" id="cantidad-{{item.id}}" min="1" max="10">
+                                <input *ngIf="item.nombre !== 'Playera UMG'" type="number" id="cantidad-{{item.id}}" min="1" max="10" value="0">
                                 <ng-container *ngIf="item.nombre === 'Playera UMG'">
                                     <select id="talla-{{item.id}}" formControlName="talla">
                                         <option value="">Selecciona una talla</option>
@@ -51,15 +58,6 @@
                         </tr>
                     </ng-container>
 
-
-
-
-
-
-
-
-
-                    
                 </tbody>
             </table>
             

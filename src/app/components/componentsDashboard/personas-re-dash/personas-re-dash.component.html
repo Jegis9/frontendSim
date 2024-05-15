@@ -6,48 +6,40 @@
       <button id="pdf">Descargar PDF</button>
       <button id="excel">Descargar EXCEL</button>
     </div>
+    <br>
     <div class="container-table">
-      <label for="exampleInput" class="form-label">Email address</label>
       <input type="text" class="form-control" placeholder="BUSCAR AQUI">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      <br>
     </div>
     <div class="container-table">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">ID PERSONA</th>
-            <th scope="col">CARNET</th>
-            <th scope="col">NOMBRE</th>
-            <th scope="col">APELLIDO</th>
-            <th scope="col">FECHA NACIMIENTO</th>
-            <th scope="col">CORREO ELECTRONICO</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (item of personas; track item.id) {
-            <tr>
-              <td>{{item.id}}</td>
-              <td>{{item.carnet}}</td>
-              <td>{{item.nombres}}</td>
-              <td>{{item.apellidos}}</td>
-              <td>{{item.fechaNacimiento}}</td>
-              <td>{{item.correo}}</td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    </div>
-    <div class="container-table">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-      </nav>
-    </div>
+      <div class="table-wrapper">
+          <table class="table table-hover">
+              <thead class="table-header">
+                  <tr>
+                      <th scope="col">ID PERSONA</th>
+                      <th scope="col">CARNET</th>
+                      <th scope="col">NOMBRE</th>
+                      <th scope="col">APELLIDO</th>
+                      <th scope="col">FECHA NACIMIENTO</th>
+                      <th scope="col">CORREO ELECTRONICO</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @for (item of personas; track item.id) {
+                      <tr>
+                          <td>{{item.id}}</td>
+                          <td>{{item.carnet}}</td>
+                          <td>{{item.nombres}}</td>
+                          <td>{{item.apellidos}}</td>
+                          <td>{{item.fechaNacimiento}}</td>
+                          <td>{{item.correo}}</td>
+                      </tr>
+                  }
+              </tbody>
+          </table>
+      </div>
+  </div>
+  
   </div>
 </div>
 

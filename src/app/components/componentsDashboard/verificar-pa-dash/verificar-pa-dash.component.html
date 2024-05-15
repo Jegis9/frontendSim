@@ -14,53 +14,36 @@
       <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
     </div>
     <div class="container-table">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col ">ID PAGO</th>
-            <th scope="col">CARNET</th>
-            <th scope="col">NOMBRE</th>
-            <th scope="col">APELLIDO</th>
-            <th scope="col">MONTO A PAGAR</th>
-   
-          
-            <th scope="col">FECHA Y HORA </th>
-            <th scope="col" colspan="2">OPCIONES</th>
-            
-          </tr>
-        </thead>
-        <tbody>
-          @for (item of pagos; track item.id) {
-          <tr>
-         
-            <td>{{item.id}}</td>
-            <td>{{item.participante.carnet}}</td>
-            <td>{{item.participante.nombres}}</td>
-            <td>{{item.participante.apellidos}}</td>
-            <td>Q{{item.monto}}.00</td>
-            <td>{{item.fechaHora}}</td>
-            <td><a href="">{{item.verificado}}</a></td>
-            <td><a href="">{{item.imagenBoleta}}</a> </td>
-   
-      
-          
-          </tr>
-        }
-
-       
-        </tbody>
-      </table>
-    </div>
-    <div class="container-table">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-      </nav>
-    </div>
+      <div class="table-wrapper">
+          <table class="table table-hover">
+              <thead class="table-header">
+                  <tr>
+                      <th scope="col">ID PAGO</th>
+                      <th scope="col">CARNET</th>
+                      <th scope="col">NOMBRE</th>
+                      <th scope="col">APELLIDO</th>
+                      <th scope="col">MONTO A PAGAR</th>
+                      <th scope="col">FECHA Y HORA</th>
+                      <th scope="col" colspan="3">OPCIONES</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @for (item of pagos; track item.id) {
+                      <tr>
+                          <td>{{item.id}}</td>
+                          <td>{{item.participante.carnet}}</td>
+                          <td>{{item.participante.nombres}}</td>
+                          <td>{{item.participante.apellidos}}</td>
+                          <td>Q{{item.monto}}.00</td>
+                          <td>{{item.fechaHora}}</td>
+                          <td><button class="btn-aceptar">Aceptar</button></td>
+                          <td><button class="btn-rechazar">Rechazar</button></td>
+                          <td><button class="btn-imagen" onclick="<app-modalimage></app-modalimage>">Imagen</button></td>
+                      </tr>
+                  }
+              </tbody>
+          </table>
+      </div>
+  </div>
   </div>
 </div>

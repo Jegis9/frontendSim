@@ -1,10 +1,11 @@
 import { Component, OnInit,inject } from '@angular/core';
 import { SlidebarComponent } from '../slidebar/slidebar.component';
 import { PagosService } from '../../../services/pagos/pagos.service';
+import { ModalimageComponent } from '../../modalimage/modalimage.component';
 @Component({
   selector: 'app-verificar-pa-dash',
   standalone: true,
-  imports: [SlidebarComponent],
+  imports: [SlidebarComponent, ModalimageComponent],
   templateUrl: './verificar-pa-dash.component.html',
   styleUrl: './verificar-pa-dash.component.css'
 })

@@ -6,6 +6,7 @@ th{
     background-color: gray;
 }
 
+
 h1{
     color: aliceblue;
     text-align: center;
@@ -48,4 +49,37 @@ h1{
 
 .container-content {
   flex: 1;
+}
+
+.container-table {
+    max-height: 400px; /* Ajusta esta altura según tus necesidades */
+    overflow-y: auto; /* Habilita el scroll vertical */
+    overflow-x: hidden; /* Oculta el scroll horizontal */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 0; /* Elimina el padding */
+    border: none; /* Elimina cualquier borde del contenedor */
+    width: fit-content; /* Ajusta el ancho al contenido */
+}
+
+.table-wrapper {
+    display: block;
+}
+
+.table {
+    width: 100%;
+    table-layout: auto; /* Ajusta el ancho de las celdas automáticamente */
+    border-collapse: collapse; /* Asegura que los bordes de la tabla se colapsen correctamente */
+}
+
+.table th, .table td {
+    white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+    border: 1px solid #ddd; /* Añade un borde a las celdas */
+    padding: 8px; /* Añade padding a las celdas */
+}
+
+.table-header th {
+    position: sticky;
+    top: 0; /* Fija el encabezado en la parte superior */
+    background:gray; /* Fondo del encabezado */
+    z-index: 1; /* Asegura que el encabezado esté por encima del contenido */
 }

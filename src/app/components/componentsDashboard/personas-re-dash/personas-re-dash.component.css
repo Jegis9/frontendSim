@@ -1,7 +1,3 @@
-.container-table {
-    margin: 0 auto; /* Esto centra el div horizontalmente */
-    width: 50%; /* Ajusta el ancho del div según tus necesidades */
-}
 th{
     background-color: gray;
 }
@@ -49,3 +45,39 @@ h1{
 .container-content {
   flex: 1;
 }
+
+/* Asegúrate de que el contenedor no tenga margen o padding */
+.container-table {
+    max-height: 400px; /* Ajusta esta altura según tus necesidades */
+    overflow-y: auto;
+    overflow-x: hidden; /* Esto oculta el scroll horizontal */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 0; /* Elimina el padding */
+    border: none; /* Elimina cualquier borde del contenedor */
+    width: fit-content; /* Ajusta el ancho al contenido */
+  }
+  
+  /* Ajusta la tabla y las celdas */
+  .table-wrapper {
+    display: block;
+  }
+  
+  .table {
+    width: 100%;
+    table-layout: auto; /* Ajusta el ancho de las celdas automáticamente */
+    margin: 0; /* Elimina el margen */
+  }
+  
+  .table th, .table td {
+    white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+    border: 1px solid #ddd; /* Añade un borde a las celdas */
+    padding: 8px; /* Añade padding a las celdas */
+}
+
+.table-header th {
+    position: sticky;
+    top: 0; /* Fija el encabezado en la parte superior */
+    background: gray; /* Fondo del encabezado */
+    z-index: 1; /* Asegura que el encabezado esté por encima del contenido */
+}
+  

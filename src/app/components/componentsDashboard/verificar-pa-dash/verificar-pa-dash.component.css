@@ -49,3 +49,72 @@ h1{
 .container-content {
   flex: 1;
 }
+
+.container-table {
+    max-height: 400px; /* Ajusta esta altura según tus necesidades */
+    overflow-y: auto; /* Habilita el scroll vertical */
+    overflow-x: hidden; /* Oculta el scroll horizontal */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 0; /* Elimina el padding */
+    border: none; /* Elimina cualquier borde del contenedor */
+    width: fit-content; /* Ajusta el ancho al contenido */
+}
+
+.table-wrapper {
+    display: block;
+}
+
+.table {
+    width: 100%;
+    table-layout: auto; /* Ajusta el ancho de las celdas automáticamente */
+    border-collapse: collapse; /* Asegura que los bordes de la tabla se colapsen correctamente */
+    background-color: #fff; /* Fondo blanco para la tabla */
+}
+
+.table th, .table td {
+    white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+    border: 1px solid #ddd; /* Añade un borde a las celdas */
+    padding: 8px; /* Añade padding a las celdas */
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.table th {
+    background-color: #f8f9fa; /* Fondo claro para el encabezado */
+    font-weight: bold; /* Texto en negrita para el encabezado */
+}
+
+.table-header th {
+    position: sticky;
+    top: 0; /* Fija el encabezado en la parte superior */
+    background: gray; /* Fondo del encabezado */
+    z-index: 1; /* Asegura que el encabezado esté por encima del contenido */
+}
+
+/* Estilos para los botones */
+button {
+    padding: 5px 10px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 3px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 14px; /* Tamaño de la fuente */
+}
+
+.btn-aceptar {
+    background-color: #28a745; /* Fondo verde */
+    color: white; /* Texto blanco */
+}
+
+.btn-rechazar {
+    background-color: #dc3545; /* Fondo rojo */
+    color: white; /* Texto blanco */
+}
+
+.btn-imagen {
+    background-color: #007bff; /* Fondo azul */
+    color: white; /* Texto blanco */
+}
+
+/* Efecto hover para los botones */
+button:hover {
+    opacity: 0.8; /* Transparencia al pasar el mouse */
+}

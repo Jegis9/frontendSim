@@ -1,35 +1,50 @@
-<form >
+<form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
     <div class="row mt-0">
-        <div class="col-md-12 ">
-            <div class="logo">
-                <img src="assets/Image/logoUMG.png" alt="Logo SIM'24">
-            </div>
-            <h4 >Registro de pago</h4>
-            <p>A continuación ingresa tus datos para registrar el pago.</p>
+      <div class="col-md-12 ">
+        <div class="logo">
+          <img src="assets/Image/logoUMG.png" alt="Logo SIM'24">
         </div>
+        <h4>Registro de pago</h4>
+        <p>A continuación ingresa tus datos para registrar el pago.</p>
+      </div>
     </div>
     <hr>
     <div class="mb-3 row">
-        <div class="col-sm-4">
-            <input type="text" class="form-control form-control-sm text-center" id="Carnet1" formControlName="carnet">
+      <div class="col-sm-4">
+        <input type="text" class="form-control form-control-sm text-center" id="Carnet1" formControlName="carnet1">
+        <div *ngIf="registroForm.get('carnet1')?.invalid && registroForm.get('carnet1')?.touched" class="text-danger">
+          El carnet debe tener 4 dígitos.
         </div>
-        <div class="col-sm-4">
-            <input type="text" class="form-control form-control-sm text-center" id="Carnet2">
+      </div>
+      <div class="col-sm-4">
+        <input type="text" class="form-control form-control-sm text-center" id="Carnet2" formControlName="carnet2">
+        <div *ngIf="registroForm.get('carnet2')?.invalid && registroForm.get('carnet2')?.touched" class="text-danger">
+          El carnet debe tener 2 dígitos.
         </div>
-        <div class="col-sm-4">
-            <input type="text" class="form-control form-control-sm text-center" id="Carnet3">
+      </div>
+      <div class="col-sm-4">
+        <input type="text" class="form-control form-control-sm text-center" id="Carnet3" formControlName="carnet3">
+        <div *ngIf="registroForm.get('carnet3')?.invalid && registroForm.get('carnet3')?.touched" class="text-danger">
+          El carnet debe tener entre 3 y 6 dígitos.
         </div>
-        </div>
-    <div class="mb-3">
-        <label for="exampleInputPago" class="form-label">Numero de pago</label>
-        <input type="number" class="form-control form-control-sm text-center" id="exampleInputNombre" formControlName="numeropago">
+      </div>
     </div>
     <div class="mb-3">
-        <label for="exampleInputFile" class="form-label">Imagen</label>
-        <input type="file" class="form-control form-control-sm text-center" id="exampleInputFile" formControlName="imagen" >
-
+      <label for="fechaHora" class="form-label">Fecha y Hora</label>
+      <input type="datetime-local" id="fechaHora" class="form-control form-control-sm text-center" name="fechaHora" formControlName="fechahoraControl">
+      <div *ngIf="registroForm.get('fechahoraControl')?.invalid && registroForm.get('fechahoraControl')?.touched" class="text-danger">
+        La fecha y hora son requeridas.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputFile" class="form-label">Imagen</label>
+      <input type="file" class="form-control form-control-sm text-center" id="exampleInputFile" formControlName="imagen" (change)="onFileSelect($event)">
+      <div *ngIf="registroForm.get('imagen')?.invalid && registroForm.get('imagen')?.touched" class="text-danger">
+        Debes seleccionar una imagen (jpg, png, jpeg).
+      </div>
     </div>
     <div class="mb-3 text-center">
-        <button type="submit" class="btn btn-primary">Registrar pago</button>
+      <button type="submit" class="btn btn-primary">Registrar pago</button>
     </div>
-</form>
+  </form>
+  

@@ -1,70 +1,145 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AddPagoService } from '../../services/addPago/add-pago.service';
 import Swal from 'sweetalert2';
+import { HttpClient } from '@angular/common/http';
+import { AzureStorageService } from '../../azure-storage.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-registropago',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './registropago.component.html',
   styleUrl: './registropago.component.css'
 })
 export class RegistropagoComponent {
-  // private fb = inject(FormBuilder);
-  // private AddPago = inject(AddPagoService);
-  
-  // selectedFile: File | undefined;
+  private sasToken  = "sp=racwdli&st=2024-05-16T01:04:23Z&se=2024-05-28T09:04:23Z&sv=2022-11-02&sr=c&sig=0qsSg9C4TOJOUB7bNf6Rk2OO77tfwI8GXsvCfdBiyug%3D";
+  selectedFile: File | null = null;
+  detallePagoId: number = 0;
+  registroForm = new FormGroup({
+    carnet1: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4), Validators.pattern('[0-9]*')]),
+    carnet2: new FormControl('' , [Validators.required, Validators.minLength(2), Validators.maxLength(2), Validators.pattern('[0-9]*')]),
+    carnet3: new FormControl('' , [Validators.required, Validators.minLength(3), Validators.maxLength(6), Validators.pattern('[0-9]*')]),
+    fechahoraControl: new FormControl('', Validators.required),
+    imagen: new FormControl<File | null>(null, Validators.required)  // Este será manejado especialmente para archivos
+  });
 
-  // onFileSelected(event: any) {
-  //   if (event.target.files && event.target.files.length > 0) {
-  //     this.selectedFile = event.target.files[0];
-  //     console.log('Archivo seleccionado:', this.selectedFile?.name);
-  //   }
-  // }
+    constructor(
+    private http: HttpClient, 
+    private blobService: AzureStorageService,
+    private pagoService: AddPagoService,
+  ) { }
 
-  // // ESTE ES EL FORMULARIO QUE RECIBIRA LOS DATOS
-  // form = this.fb.group(
-  //   {
-  //     carnet: [''],
-  //     numeropago:['', [Validators.required]],
-  //     imagen:['', [Validators.required]]
-  //   });
+  async onSubmit() {
+    
+    if(this.registroForm.valid && this.selectedFile && this.validateFile(this.selectedFile)){
+      const carnet1 = this.registroForm.get('carnet1')?.value;
+      const carnet2 = this.registroForm.get('carnet2')?.value;
+      const carnet3 = this.registroForm.get('carnet3')?.value;
+      const fechahoraControl = this.registroForm.get('fechahoraControl')?.value;
+      const fechaHora = fechahoraControl ? this.formatDate(fechahoraControl) : '';
+      const carnetCompleto = `${carnet1}-${carnet2}-${carnet3}`;
 
-  // // AL MOMENTO DE CREAR LOS DATOS, TOMA LOS TRES DATOS DE LOS TRES
-  // // INPUTS DEL CARNET 
-  // create (){
-  //   const persona = this.form.value;
-  //   const carnet1 = this.form.get('carnet')?.value;
-  //   const carnet2 = (document.getElementById('Carnet2') as HTMLInputElement)?.value || '';
-  //   const carnet3 = (document.getElementById('Carnet3') as HTMLInputElement)?.value || '';
-  //   // CONCATENACION DE LOS TRES CAMPOS
-  //   const carnetCompleto = `${carnet1}-${carnet2}-${carnet3}`;
 
-  //   // Obtener el detalle del pago
-  //   this.AddPago.obtenerDetalle(carnetCompleto).subscribe((resultado: any) => {
-  //     console.log(resultado);
-  //     const detallePago = resultado.detallePago; // Asegúrate de que el nombre del campo sea correcto
+      const detallePagoId = await this.obtenerDetalle(carnetCompleto);
+      if (detallePagoId === 0 || detallePagoId === null) {
+        Swal.fire('Error', 'Usted no Ha registrado su detalle de pago', 'error');
+        return;
+      }
 
-  //     // Crear un FormData para enviar la imagen
-  //     const formData = new FormData();
-  //     if (this.selectedFile) {
-  //       formData.append('imagen', this.selectedFile);
-  //     } else {
-  //       // Manejar el caso en el que no se seleccionó ninguna imagen
-  //     }
+      const pagoExiste = await this.verificarPago(detallePagoId);
 
-  //     // Llamar a la API para agregar el pago
-  //     this.AddPago.crear(carnetCompleto, detallePago, formData, '2024-04-19T19:0')
-  //       .subscribe(() => {
-  //         // SI TODO ESTA BIEN ENTONCES MUESTRA ESTE MENSAJE
-  //         Swal.fire({
-  //           title: '¡Hola!',
-  //           text: 'Tu registro es exitoso, sigue con los demás pasos',
-  //           icon: 'success',
-  //           confirmButtonText: 'Ok'
-  //         });
-  //       });
-  //   });
-  // }
+      if (pagoExiste || pagoExiste === null) {
+        Swal.fire('Error', 'Usted ya ha registrado su pago, espere a que le confirmen su pago', 'error');
+        return;
+      }
+
+
+      try {
+        this.subirImagen(this.selectedFile, carnetCompleto);
+      } catch (error) {
+          console.error('Error during file upload:', error);
+      }
+
+      const imageUrl = `https://blobsimposio.blob.core.windows.net/pagos/${carnetCompleto}${this.selectedFile?.name}`;
+      this.pagoService.crear(carnetCompleto, detallePagoId, imageUrl, fechaHora).subscribe(
+        response => {
+          console.log('Pago registrado:', response);
+          Swal.fire('Pago registrado', 'El pago ha sido registrado exitosamente', 'success');
+        },
+        error => {
+          console.error('Error al registrar pago:', error);
+          Swal.fire('Error', 'Ha ocurrido un error al registrar el pago', 'error');
+        }
+      );
+
+    }
+  }
+
+  obtenerDetalle(carnet: string): Promise<number> {
+    return this.pagoService.obtenerDetalle(carnet).toPromise()
+      .then(data => data ?? 0)
+      .catch(error => {
+        console.error('Error al obtener detalle de pago:', error);
+        throw new Error('Error al obtener detalle de pago');
+      });
+  }
+
+  verificarPago(detallePagoId: number): Promise<boolean> {
+    return this.pagoService.obtenerPago(detallePagoId).toPromise()
+      .then(response => {
+        if(response === null || response === 0){
+          return false;
+        }
+        return true;
+      })
+      .catch(error => {
+        if (error.status === 404) {
+          return false; // El pago no existe
+        }
+        console.error('Error al verificar pago:', error);
+        throw new Error('Error al verificar pago');
+      });
+  }
+
+
+public subirImagen(file: File, carnet: string){
+  this.blobService.uploadImage(this.sasToken, file, `${carnet}${file.name}`, () => {
+
+  })
+}
+
+validateFile(file: File): boolean {
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+  return allowedTypes.includes(file.type);
+}
+
+onFileSelect(event: Event) {
+  const element = event.target as HTMLInputElement;
+  if (element.files && element.files.length > 0) {
+      const file = element.files[0];
+      this.selectedFile = file;
+  }
+}
+
+  enviarDatos(formData: FormData) {
+
+    this.http.post('https://apisimposio.shop/Participante/AddPago/', formData).subscribe(
+      response => console.log('Pago registrado:', response),
+      error => console.error('Error al registrar pago:', error)
+    );
+  }
+
+  public formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const year = date.getUTCFullYear();
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const hours = String(date.getUTCHours()).padStart(2, '0');
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}Z`;
+  }
+
 }

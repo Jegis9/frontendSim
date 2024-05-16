@@ -1,5 +1,3 @@
-
-
 <form [formGroup]="form" (ngSubmit)="create()">
     <div class="row mt-0">
         <div class="col-md-12 ">
@@ -36,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <ng-container *ngFor="let item of merchadising; trackBy: trackByFn">
+                    <ng-container *ngFor="let item of merchandising; trackBy: trackByFn">
                         <tr>
                             <td>{{ item.id }}</td>
                             <td>{{ item.nombre }}</td>

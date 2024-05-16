@@ -42,7 +42,7 @@ export class AdministracionComponent {
             // Manejar los datos del colaborador si es necesario
             console.log('Colaborador:', colaborador);
   
-            Swal.fire('Login Successful', 'You are now logged in', 'success');
+            Swal.fire('¡Bienvenido!', 'Iniciaste sesión correctamente', 'success');
             this.redirectToDashboard();
           },
           error => {

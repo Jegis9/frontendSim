@@ -1,3 +1,4 @@
+<!-- Navbar principal -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="#">SIM'24</a>
     <div class="collapse navbar-collapse" id="navbarMain">
@@ -5,16 +6,54 @@
     </div>
 </nav>
 
-<!-- Botón de hamburguesa para las opciones del sidebar -->
-
+<!-- Botón de hamburguesa para las opciones del sidebar en pantallas pequeñas -->
 <nav class="navbar navbar-dark bg-dark d-md-none">
-    <br>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarOptions" aria-controls="sidebarOptions" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>
 
-<!-- Opciones del sidebar -->
+<!-- Sidebar para pantallas grandes -->
+<div id="sidebar" class="d-none d-md-block bg-dark text-white px-3 pt-2 min-vh-100">
+    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
+        <li class="nav-item">
+            <a routerLink="/graficas" routerLinkActive="active" class="nav-link align-middle px-0">
+                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Reportes generales</span>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/personas" routerLinkActive="active" class="nav-link px-0 align-middle">
+                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Personas registradas</span>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/pagos" routerLinkActive="active" class="nav-link px-0 align-middle">
+                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Verificar pagos</span>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/verificar" routerLinkActive="active" class="nav-link px-0 align-middle">
+                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Pagos realizados</span>
+            </a>
+        </li>
+    </ul>
+    <hr>
+    <div class="dropdown pb-4">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+            <li><a class="dropdown-item" href="#">Documentación</a></li>
+            <li><a class="dropdown-item" href="#">Servicio al cliente</a></li>
+            <li>
+                <hr class="dropdown-divider">
+                <a class="dropdown-item" href="#">Cerrar sesión</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Sidebar para pantallas pequeñas -->
 <div class="collapse" id="sidebarOptions">
     <div class="bg-dark text-white px-3 pt-2">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
@@ -45,13 +84,16 @@
                 <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">Documentacion</a></li>
+                <li><a class="dropdown-item" href="#">Documentación</a></li>
                 <li><a class="dropdown-item" href="#">Servicio al cliente</a></li>
                 <li>
                     <hr class="dropdown-divider">
-                    <a class="dropdown-item" href="#">Cerrar sesion</a>
+                    <a class="dropdown-item" href="#">Cerrar sesión</a>
                 </li>
             </ul>
         </div>
     </div>
 </div>
+
+<!-- Scripts de Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

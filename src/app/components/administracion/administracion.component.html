@@ -1,26 +1,23 @@
 <div class="container mt-5">
     <div>
-        <h2 class="text-center">INICIO DE SESION PARA ADMINISTRADORES</h2>
-        <div class="logo">
-            <img src="assets/Image/simp.jpg" alt="Logo SIM'24" style="width: 50%;">
-        </div>
+      <h2 class="text-center">INICIO DE SESION PARA ADMINISTRADORES</h2>
+      <div class="logo">
+        <img src="assets/Image/simp.jpg" alt="Logo SIM'24" style="width: 50%;">
+      </div>
     </div>
-
-    <form>
-        <div class="mb-3 formulario">
-            <label for="exampleInputEmail1" class="form-label">Usuario</label>
-            <input class="form-control">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control">
-        </div>
-    
-        <div class="mb-3 text-center">
-            <button (click)="redirectToDashboard()" class="btn btn-primary">Ingresar</button>
-        </div>
+  
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input id="username" formControlName="username" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input id="password" formControlName="password" type="password" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
     </form>
-    
-</div>
+  </div>
+  
 
 

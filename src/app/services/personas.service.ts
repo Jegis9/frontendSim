@@ -12,6 +12,7 @@ export class PersonasService {
   private http = inject(HttpClient);
 
   list(){
+    
     return this.http.get('https://apisimposio.shop/Participante/Get');
   }
 

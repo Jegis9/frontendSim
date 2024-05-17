@@ -44,7 +44,7 @@ export class RegistroComponent {
       .subscribe(()=>{
         //SI TODO ESTA BIEN ENTONCES MUESTRA ESTE MENSAJE
         Swal.fire({
-          title: '¡Hola!',
+          title: '¡Genial!',
           text: 'Tu registro es existoso, sigue con los demas pasos',
           icon: 'success',
           confirmButtonText: 'Ok'
@@ -53,5 +53,3 @@ export class RegistroComponent {
       });  
     }
     }
-
-

@@ -1,6 +1,8 @@
+/*ESTILOS DE LAS GRAFICAS INICIO*/
 .container-table {
     margin: 0 auto; /* Esto centra el div horizontalmente */
-    width: 50%; /* Ajusta el ancho del div según tus necesidades */
+    width: 35%; /* Ajusta el ancho del div según tus necesidades */
+    height: 25px;
 }
 th{
     background-color: gray;
@@ -11,14 +13,7 @@ h1{
     text-align: center;
     margin-top: 2%;
 }
-#pdf{
-    background-color: red;
-    color: aliceblue;
-}
-#excel{
-    background-color: green;
-    color: aliceblue;
-}
+
 .container-buttons {
     margin: 0 auto;
     display: flex;
@@ -34,7 +29,59 @@ h1{
     margin-left: auto; /* Empuja el botón a la derecha */
 }
 
+#chart, #chart2 {
+    width: 35%; /* Ajusta el ancho según tus necesidades */
+    height: 25%; /* Ajusta la altura según tus necesidades */
+  }
+  
+/*ESTILOS DE LAS GRAFICAS FIN*/
 
+/*ESTILOS DE LAS TARJETAS INICIO*/
+.tarjetasContadoras{
+    width: 20%;
+    height: 15%;
+}
+.dashboard-card {
+    display: flex; 
+    justify-content: center; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .tarjetasContadoras {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 10px; /* Espacio entre las tarjetas */
+    padding: 10px;
+    width: 20%; /* Ancho de cada tarjeta */
+  }
+  
+  .card-header {
+    background-color: #007bff;
+    padding: 10px 20px;
+    text-align: center;
+  }
+  
+  .card-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #fff;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .amount {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin: 20px 0;
+  }
+  /*ESTILOS DE LAS TARJETAS FIN*/
+  
 
 
 
@@ -43,7 +90,7 @@ h1{
 }
 
 .container-sidebar {
-  width: 30%; /* Por ejemplo, puedes ajustar el ancho según tus necesidades */
+  width: 30%; 
 }
 
 .container-content {

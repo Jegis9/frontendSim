@@ -61,16 +61,19 @@ create() {
 
         this.detallePagoService.create(carnetCompleto, detallePago.merchandising).subscribe(
           () => {
-              Swal.fire({
-                  title: '¡Hola!',
-                  text: 'Tu registro es exitoso, sigue con los demás pasos',
-                  icon: 'success',
-                  confirmButtonText: 'Ok'
-              });
+             
               this.router.navigate(['/registropago']);
           },
           (error) => {
+            Swal.fire({
+                icon: 'warning',
+                title: '¡Cuidado!',
+                text: 'No haz registrado tu usuario',
+                confirmButtonColor: '#3366ff', // Azul
+                confirmButtonText: 'Entendido'
+              });
               console.error('Error al crear el registro:', error);
+              
               this.router.navigate(['/registro']); // Redirigir en caso de error
           }
       );

@@ -1,5 +1,29 @@
 <div class="buttons">
-    <button type="button" class="btn btn-outline-success">sobre nostros</button>
-    <button type="button" class="btn btn-outline-success">Participa aquí</button>
+  <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#sobreNosotrosModal">
+    Sobre Nosotros
+  </button>
+  <button type="button" class="btn btn-outline-success" (click)="redirectToRegistro()">Participa aquí</button>
   </div>
   
+
+  <div class="modal fade" id="sobreNosotrosModal" tabindex="-1" aria-labelledby="sobreNosotrosModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sobreNosotrosModalLabel">Sobre Nosotros</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Alumnos</p>
+          <p>Daniel Josue Fuentes Figueroa</p>
+          <p>Erickson Leonardo Tacam Batz</p>
+          <p>Luis Eduardo Cayax Perez</p>
+          <p>Mynor Estuardo Baran Leiva</p>
+          <p>Jessica Anai García Ixcaquic</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

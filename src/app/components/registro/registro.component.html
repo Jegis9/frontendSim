@@ -1,50 +1,65 @@
-
-    
-    <form [formGroup]="form" (ngSubmit)="create()">
+<form [formGroup]="form" (ngSubmit)="create()">
     <div class="row mt-0">
-        <div class="col-md-12 ">
-            <div class="logo">
-                <img src="assets/Image/logoUMG.png" alt="Logo SIM'24">
-            </div>
-        <h4 >Registro</h4>
-        <p>A continuacion ingresa tus datos para registrarte al evento. </p>
+      <div class="col-md-12 ">
+        <div class="logo">
+          <img src="assets/Image/logoUMG.png" alt="Logo SIM'24">
         </div>
+        <h4>Registro</h4>
+        <p>A continuación ingresa tus datos para registrarte al evento.</p>
+      </div>
+    </div>
+    <hr>
+    <label for="exampleInputCarnet" class="col-sm-2 col-form-label">Carné</label>
+    <div class="mb-3 row">
+      <div class="col-sm-4">
+        <input type="text" class="form-control form-control-sm text-center" id="Carnet1" formControlName="carnet1">
+        <div *ngIf="form.get('carnet1')?.invalid && form.get('carnet1')?.touched" class="text-danger">
+          El carnet debe tener 4 dígitos.
         </div>
-        <hr>
-        <label for="exampleInputCarnet" class="col-sm-2 col-form-label">Carné</label>
-        <div class="mb-3 row">
-        <div class="col-sm-4">
-            <input type="text" class="form-control form-control-sm text-center" id="Carnet1" formControlName="carnet">
+      </div>
+      <div class="col-sm-4">
+        <input type="text" class="form-control form-control-sm text-center" id="Carnet2" formControlName="carnet2">
+        <div *ngIf="form.get('carnet2')?.invalid && form.get('carnet2')?.touched" class="text-danger">
+          El carnet debe tener 2 dígitos.
         </div>
-        <div class="col-sm-4">
-            <input type="text" class="form-control form-control-sm text-center" id="Carnet2">
+      </div>
+      <div class="col-sm-4">
+        <input type="text" class="form-control form-control-sm text-center" id="Carnet3" formControlName="carnet3">
+        <div *ngIf="form.get('carnet3')?.invalid && form.get('carnet3')?.touched" class="text-danger">
+          El carnet debe tener entre 3 y 6 dígitos.
         </div>
-        <div class="col-sm-4">
-            <input type="text" class="form-control form-control-sm text-center" id="Carnet3">
-        </div>
-        </div>
-        
-        
-        
-        
-        
-    <div class="mb-3">
-        <label for="exampleInputNombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control form-control-sm text-center" id="exampleInputNombre" formControlName="nombres">
+      </div>
     </div>
     <div class="mb-3">
-        <label for="exampleInputApellido" class="form-label">Apellido</label>
-        <input type="text" class="form-control form-control-sm text-center" id="exampleInputApellido" formControlName="apellidos">
+      <label for="exampleInputNombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control form-control-sm text-center" id="exampleInputNombre" formControlName="nombres">
+      <div *ngIf="form.get('nombres')?.invalid && form.get('nombres')?.touched" class="text-danger">
+        El nombre solo debe contener letras.
+      </div>
     </div>
     <div class="mb-3">
-        <label for="exampleInputEmail" class="form-label">Correo</label>
-        <input type="email" class="form-control form-control-sm text-center" id="exampleInputEmail" formControlName="correo">
+      <label for="exampleInputApellido" class="form-label">Apellido</label>
+      <input type="text" class="form-control form-control-sm text-center" id="exampleInputApellido" formControlName="apellidos">
+      <div *ngIf="form.get('apellidos')?.invalid && form.get('apellidos')?.touched" class="text-danger">
+        El apellido solo debe contener letras.
+      </div>
     </div>
     <div class="mb-3">
-        <label for="exampleInputFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-        <input type="date" class="form-control form-control-sm text-center" id="exampleInputFechaNacimiento" formControlName="fechaNacimiento">
+      <label for="exampleInputEmail" class="form-label">Correo</label>
+      <input type="email" class="form-control form-control-sm text-center" id="exampleInputEmail" formControlName="correo">
+      <div *ngIf="form.get('correo')?.invalid && form.get('correo')?.touched" class="text-danger">
+        Ingresa un correo válido.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+      <input type="date" class="form-control form-control-sm text-center" id="exampleInputFechaNacimiento" formControlName="fechaNacimiento">
+      <div *ngIf="form.get('fechaNacimiento')?.invalid && form.get('fechaNacimiento')?.touched" class="text-danger">
+        La fecha de nacimiento es requerida.
+      </div>
     </div>
     <div class="mb-3 text-center">
-        <button type="submit" class="btn btn-primary">Registrar</button>
+      <button type="submit" class="btn btn-primary">Registrar</button>
     </div>
-</form>
+  </form>
+  

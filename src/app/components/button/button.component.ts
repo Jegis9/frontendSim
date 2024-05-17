@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-button',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './button.component.css'
 })
 export class ButtonComponent {
+  constructor(private router: Router) {}
 
+  redirectToRegistro() {
+    this.router.navigate(['/registro']);
+  }
 }

@@ -2,7 +2,7 @@ import { AfterViewInit, Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PersonasService } from '../../services/personas.service';
 import Swal from 'sweetalert2';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registro',
   standalone: true,
@@ -80,14 +80,12 @@ export class RegistroComponent implements AfterViewInit{
       .subscribe(()=>{
         //SI TODO ESTA BIEN ENTONCES MUESTRA ESTE MENSAJE
         Swal.fire({
-          title: '¡Genial!',
+          title: '¡Hola!',
           text: 'Tu registro es existoso, sigue con los demas pasos',
           icon: 'success',
           confirmButtonText: 'Ok'
         });
-
+      
       });  
     }
     }
-
-    

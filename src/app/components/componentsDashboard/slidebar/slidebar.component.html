@@ -1,19 +1,15 @@
-<!-- Navbar principal -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="#">SIM'24</a>
     <div class="collapse navbar-collapse" id="navbarMain">
-        <!-- Aquí puedes poner el contenido de tu navbar -->
     </div>
 </nav>
 
-<!-- Botón de hamburguesa para las opciones del sidebar en pantallas pequeñas -->
 <nav class="navbar navbar-dark bg-dark d-md-none">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarOptions" aria-controls="sidebarOptions" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>
 
-<!-- Sidebar para pantallas grandes -->
 <div id="sidebar" class="d-none d-md-block bg-dark text-white px-3 pt-2 min-vh-100">
     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
         <li class="nav-item">
@@ -43,17 +39,14 @@
             <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-            <li><a class="dropdown-item" href="#">Documentación</a></li>
-            <li><a class="dropdown-item" href="#">Servicio al cliente</a></li>
             <li>
                 <hr class="dropdown-divider">
-                <a class="dropdown-item" href="#">Cerrar sesión</a>
+                <a class="dropdown-item" routerLink="/inicio" routerLinkActive="active">Cerrar sesión</a>
             </li>
         </ul>
     </div>
 </div>
 
-<!-- Sidebar para pantallas pequeñas -->
 <div class="collapse" id="sidebarOptions">
     <div class="bg-dark text-white px-3 pt-2">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
@@ -84,11 +77,9 @@
                 <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">Documentación</a></li>
-                <li><a class="dropdown-item" href="#">Servicio al cliente</a></li>
                 <li>
                     <hr class="dropdown-divider">
-                    <a class="dropdown-item" href="#">Cerrar sesión</a>
+                    <a class="dropdown-item" routerLink="/inicio" routerLinkActive="active">Cerrar sesión</a>
                 </li>
             </ul>
         </div>

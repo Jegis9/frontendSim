@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
 import { PersonasReDashComponent } from './components/componentsDashboard/personas-re-dash/personas-re-dash.component';
 import { PagosReaDashComponent } from './components/componentsDashboard/pagos-rea-dash/pagos-rea-dash.component';
 import { VerificarPaDashComponent } from './components/componentsDashboard/verificar-pa-dash/verificar-pa-dash.component';
+import { AsistenciaComponent } from './components/componentsDashboard/asistencia/asistencia.component';
 
 export const routes: Routes = [
  
@@ -24,6 +25,7 @@ export const routes: Routes = [
     { path: 'graficas', component:GraficasdashComponent},
     { path: 'personas',component: PersonasReDashComponent},
     { path: 'pagos', component: PagosReaDashComponent},
-    { path: 'verificar', component: VerificarPaDashComponent}
+    { path: 'verificar', component: VerificarPaDashComponent},
+    { path: 'asistencia', component: AsistenciaComponent}
 
 ];

@@ -1,0 +1,78 @@
+th{
+    background-color: gray;
+}
+
+h1{
+    color: aliceblue;
+    text-align: center;
+    margin-top: 2%;
+}
+.text-center{
+    padding: 5%;
+}
+.container-buttons {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 50%
+}
+
+.left {
+    margin-right: auto; /* Empuja el botón a la izquierda */
+}
+
+.right {
+    margin-left: auto; /* Empuja el botón a la derecha */
+}
+
+
+
+
+
+.container-flex {
+  display: flex;
+}
+
+.container-sidebar {
+  width: 30%; /* Por ejemplo, puedes ajustar el ancho según tus necesidades */
+}
+
+.container-content {
+  flex: 1;
+}
+
+/* Asegúrate de que el contenedor no tenga margen o padding */
+.container-table {
+    max-height: 400px; /* Ajusta esta altura según tus necesidades */
+    overflow-y: auto;
+    overflow-x: hidden; /* Esto oculta el scroll horizontal */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 0; /* Elimina el padding */
+    border: none; /* Elimina cualquier borde del contenedor */
+    width: fit-content; /* Ajusta el ancho al contenido */
+  }
+  
+  /* Ajusta la tabla y las celdas */
+  .table-wrapper {
+    display: block;
+  }
+  
+  .table {
+    width: 100%;
+    table-layout: auto; /* Ajusta el ancho de las celdas automáticamente */
+    margin: 0; /* Elimina el margen */
+  }
+  
+  .table th, .table td {
+    white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+    border: 1px solid #ddd; /* Añade un borde a las celdas */
+    padding: 8px; /* Añade padding a las celdas */
+}
+
+.table-header th {
+    position: sticky;
+    top: 0; /* Fija el encabezado en la parte superior */
+    background: gray; /* Fondo del encabezado */
+    z-index: 1; /* Asegura que el encabezado esté por encima del contenido */
+}
+  

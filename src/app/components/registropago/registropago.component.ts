@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { AfterViewInit, Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AddPagoService } from '../../services/addPago/add-pago.service';
 import Swal from 'sweetalert2';
@@ -13,7 +13,35 @@ import { CommonModule } from '@angular/common';
   templateUrl: './registropago.component.html',
   styleUrl: './registropago.component.css'
 })
-export class RegistropagoComponent {
+export class RegistropagoComponent implements AfterViewInit{
+
+
+
+  ngAfterViewInit(): void {
+    // Inicializa el reCAPTCHA
+    setTimeout(() => {
+      window['grecaptcha'].render('tu-recaptcha-element', {
+        sitekey: '6LdDpt8pAAAAADLz_MpgfTqem-XnmTnuLgjJai4B'
+      });
+    }, 0);
+  }
+    /*VERIFICA CAPTCHA INICIO*/
+    verificarCaptcha(): boolean {
+      const response = window['grecaptcha'].getResponse();
+      if (!response) {
+        Swal.fire({
+          icon: 'warning',
+          title: '¡Cuidado!',
+          text: 'Primero debes de marcar ReCaptcha',
+          confirmButtonColor: '#3366ff', 
+          confirmButtonText: 'Entendido'
+        });
+        return false;
+      }
+      return true;
+    }
+      /*VERIFICA CAPTCHA FIN*/
+
   private sasToken  = "sp=racwdli&st=2024-05-16T01:04:23Z&se=2024-05-28T09:04:23Z&sv=2022-11-02&sr=c&sig=0qsSg9C4TOJOUB7bNf6Rk2OO77tfwI8GXsvCfdBiyug%3D";
   selectedFile: File | null = null;
   detallePagoId: number = 0;
@@ -33,6 +61,12 @@ export class RegistropagoComponent {
 
   async onSubmit() {
     
+        /*VERIFICA CAPTCHA INICIO ANTES*/
+        if (!this.verificarCaptcha()) {
+          return;
+        }
+          /*VERIFICA CAPTCHA INICIO ANTES*/
+
     if(this.registroForm.valid && this.selectedFile && this.validateFile(this.selectedFile)){
       const carnet1 = this.registroForm.get('carnet1')?.value;
       const carnet2 = this.registroForm.get('carnet2')?.value;

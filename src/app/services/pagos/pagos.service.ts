@@ -16,4 +16,9 @@ export class PagosService {
     let confirmar = `https://apisimposio.shop/Participante/PagoVerificado/${idPago}/${carnet}`
     return this.http.post(confirmar, {})
   }
+
+  rechazarPago(idPago: number, carnet: string){
+    let rechazar = `https://apisimposio.shop/Participante/BorrarPago/${idPago}/${carnet}`
+    return this.http.post(rechazar, {})
+  }
 }

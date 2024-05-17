@@ -28,9 +28,9 @@
                           <td>Q{{item.monto}}.00</td>
                           <td>{{item.fechaHora}}</td>
                           <td><button class="btn-aceptar" (click)="aceptarPago(item.id, item.participante.carnet)">Aceptar</button></td>
-                          <td><button class="btn-rechazar">Rechazar</button></td>
+                          <td><button class="btn-rechazar" (click)="rechazarPago(item.id, item.participante.carnet)">Rechazar</button></td>
                           <td>
-                            <button type="button" class="btn btn-imagen" data-bs-toggle="modal" data-bs-target="#imagenModal">
+                            <button type="button" class="btn btn-imagen" data-bs-toggle="modal" data-bs-target="#imagenModal" (click)="setImagenUrl(item.imagenBoleta)">
                               Imagen
                             </button>
                           </td>
@@ -51,8 +51,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <!-- Contenido del modal -->
-          <p>Esta es una imagen</p>
+          <img [src]="imagenUrl" class="img-fluid" alt="Imagen de Boleta">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

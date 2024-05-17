@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class VerificarPaDashComponent implements OnInit{
 
   private pagosService = inject(PagosService);
-
+  imagenUrl: string = '';
   pagos: any[] = [];
   
   ngOnInit(): void {
@@ -37,4 +37,23 @@ export class VerificarPaDashComponent implements OnInit{
       }
     );
   }
+
+  rechazarPago(idPago: number, carnet: string): void {
+    this.pagosService.rechazarPago(idPago, carnet)
+    .subscribe(
+      (response) => {
+        this.pagos = this.pagos.filter(pago => pago.id !== idPago);
+        Swal.fire('Pago Rechazado', 'El pago ha sido rechazado exitosamente', 'success');
+      },
+      (error) => {
+        console.error('Error al rechazar el pago:', error);
+        Swal.fire('Error', 'Ha ocurrido un error al rechazar el pago', 'error');
+      }
+    );
+  }
+
+  setImagenUrl(url: string): void {
+    this.imagenUrl = url;
+  }
+
 }

@@ -1,36 +1,45 @@
-
-<div class="container-flex" >
+<div class="container-flex">
     <app-slidebar></app-slidebar>
     <div class="container-content mt-5">
-      <h1>Pagos registrados</h1>
-      <div class="container-table">
-        <div class="flex flex-wrap mt-6">
-            <div class="w-full lg:w-1/2 pr-0 lg:pr-2">
-                <p class="text-xl pb-3 flex items-center text-white">
-                    <i class="fas fa-check mr-3"></i> Inscritos vs Pagado
-                </p>
-                <div class="p-6 bg-white ">
-                    <canvas #chartOne width="400" height="200"></canvas>
-                </div>
-            </div>
-            <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
-                <p class="text-xl pb-3 flex items-center text-white">
-                    <i class="fas fa-check mr-3"></i> Detalle solicitado vs Detalle pagado
-                </p>
-                <div class="p-6 bg-white">
-                    <canvas #chartTwo width="400" height="200"></canvas>
-                </div>
-            </div>
-        </div>
-        
-        
 
-            <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
-                <p class="text-xl pb-3 flex items-center text-white">
-                    <i class="fas fa-check mr-3"></i> Merchadasing solicitado vs Merchadasing pagado
-                </p>
-                <div class="p-6 bg-white">
-                    <canvas #chartFour width="400" height="200"></canvas>
-                </div>
-            </div>
-        
+          
+      <h1>Dashboard</h1>
+      <div class="dashboard-card">
+<div class="tarjetasContadoras">
+    <div class="card-header">
+        <h2>Total de registros</h2>
+      </div>
+      <div class="card-body">
+        <p class="amount" id="total"></p>
+      </div>
+</div>
+<div class="tarjetasContadoras">
+    <div class="card-header">
+        <h2>Total de pagos</h2>
+      </div>
+      <div class="card-body">
+        <p class="amount" id="total2"></p>
+      </div>
+</div>
+      </div>
+      <div class="container-table">
+        <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
+          <p class="text-xl pb-3 flex items-center text-white">
+            <i class="fas fa-check mr-3"></i> Personas registradas vs Pagos realizados
+          </p>
+          <div class="p-6 bg-white">
+            <canvas id="chart"></canvas> <!-- Utiliza el identificador chart1 -->
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
+          <p class="text-xl pb-3 flex items-center text-white">
+            <i class="fas fa-check mr-3"></i> Personas registradas por edad
+          </p>
+          <div class="p-6 bg-white">
+            <canvas id="chart2"></canvas> <!-- Utiliza el identificador chart2 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

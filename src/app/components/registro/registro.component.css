@@ -1,63 +1,66 @@
 .logo {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-  }
-  .logo img {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    max-width: 20%; /* Ajusta el tamaño máximo de la imagen para que se ajuste al contenedor */
-    height: auto; /* Mantiene la proporción de aspecto de la imagen */
-  }
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+.logo img {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  max-width: 20%; /* Ajusta el tamaño máximo de la imagen para que se ajuste al contenedor */
+  height: auto; /* Mantiene la proporción de aspecto de la imagen */
+}
 
-  h4,p{
-    text-align: center;
-
-  }
+h4, p {
+  text-align: center;
+}
 
 form {
-    width: 30%;
-    margin: auto;
-    color: white;
-
-    margin-top: 5%;
-    padding: 20px; /* Agrega un espacio entre el borde y los campos */
+  width: 30%;
+  margin: auto;
+  color: white;
+  margin-top: 5%;
+  padding: 20px; /* Agrega un espacio entre el borde y los campos */
 }
 
 button {
-    background-color: green;
-    color: white;
-    margin: auto;
+  background-color: green;
+  color: white;
+  display: block; /* Asegura que el botón se centre */
+  margin: auto;
 }
-button:hover{
-    border: 1px solid green;
+
+button:hover {
+  border: 1px solid green;
 }
+
 label, input {
-    margin-bottom: 10px; /* Agrega un margen entre los campos */
+  margin-bottom: 10px; /* Agrega un margen entre los campos */
 }
-hr{
-    color: greenyellow;
-    border: 2px solid;
+
+hr {
+  color: greenyellow;
+  border: 2px solid;
 }
+
+
 
 /* Para laptops: ancho de pantalla hasta 1024px */
 @media (max-width: 1024px) {
   form {
-      width: 50%;
+    width: 50%;
   }
 }
-
 
 /* Para tablets: ancho de pantalla hasta 768px */
 @media (max-width: 768px) {
   form {
-      width: 70%;
+    width: 70%;
   }
 }
 
 /* Para celulares: ancho de pantalla hasta 480px */
 @media (max-width: 480px) {
   form {
-      width: 95%;
+    width: 95%;
   }
 }

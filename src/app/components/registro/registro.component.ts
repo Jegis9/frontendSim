@@ -40,16 +40,21 @@ export class RegistroComponent {
     const persona = this.form.value;
     const carnetCompleto = `${persona.carnet1}-${persona.carnet2}-${persona.carnet3}`;
 
-    this.personasService.crear({ ...persona, carnet: carnetCompleto }).subscribe(() => {
-      Swal.fire({
-        title: '¡Genial!',
-        text: 'Tu registro es exitoso, sigue con los demás pasos',
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      });
-    }, error => {
-      console.error('Error al registrar:', error);
-      Swal.fire('Error', 'Ha ocurrido un error al registrar', 'error');
-    });
-  }
-}
+
+    //AQUI CREA MANDA AL SERVIDOR LOS CAMPOS, AL FORMULARIO LLAMADO "PERSONA"
+    //Y DESPUES EN EL CARNET DEL FORMULARIO CARNET LE ASIGNARA LA CONCATENACION DEL CARNET
+      this.PersonasService.crear({...persona,carnet:carnetCompleto})
+      .subscribe(()=>{
+        //SI TODO ESTA BIEN ENTONCES MUESTRA ESTE MENSAJE
+        Swal.fire({
+          title: '¡Genial!',
+          text: 'Tu registro es existoso, sigue con los demas pasos',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        });
+
+      });  
+    }
+    }
+
+

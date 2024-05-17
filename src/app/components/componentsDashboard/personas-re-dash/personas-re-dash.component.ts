@@ -21,37 +21,12 @@ ngOnInit(): void {
     this.personasService.list()
     .subscribe((persona: any) =>{
       this.personas = persona;
-      
+      console.log("aqui debe de aparecer el total",persona.length)
     });
+    
 }
 
 
 
-
-
-
-// //llamar a la interface
-// personasList:PersonasInterface[]=[];
-
-
-// // contructor para inyectar el servicio
-// constructor(private PersonasService: PersonasService){}
-//   ngOnInit(): void {
-//       this.getPersonas();
-//   }
-
-// //invocar al servicio para obtener getPersonas
-// getPersonas(){
-//   this.PersonasService.getPersonas().subscribe({
-//     next: (result)=>{
-//       this.personasList = result.Participante;
-//       console.log('personasList:', this.personasList);
-//     },
-//     error: (err)=>{
-//       console.log(err);
-//       console.error('Error al obtener personas:', err);
-//     }
-//   })
-// }
 
 }

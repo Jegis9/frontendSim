@@ -6,3 +6,7 @@ body {
   .elemento-especifico {
     background-color: #1C1D1F;
   }
+  .recaptcha-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+  }

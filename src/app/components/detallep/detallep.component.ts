@@ -67,26 +67,20 @@ export class DetallepComponent implements OnInit {
         })).filter(item => Number(item.cantidad) >= 1)
       };
 
-      this.detallePagoService.create(carnetCompleto, detallePago.merchandising).subscribe(
-        () => {
-          Swal.fire({
-            title: '¡Hola!',
-            text: 'Tu registro es exitoso, sigue con los demás pasos',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          });
-          this.router.navigate(['/registropago']);
-        },
-        (error) => {
-          Swal.fire({
-            title: '¡No estás registrado!',
-            text: 'Por favor regístrate primero',
-            icon: 'error',
-            confirmButtonText: 'Ok'
-          });
-          console.error('Error al crear el registro:', error);
-          this.router.navigate(['/registro']); // Redirigir en caso de error
-        }
+        this.detallePagoService.create(carnetCompleto, detallePago.merchandising).subscribe(
+          () => {
+              Swal.fire({
+                  title: '¡Hola!',
+                  text: 'Tu registro es exitoso, sigue con los demás pasos',
+                  icon: 'success',
+                  confirmButtonText: 'Ok'
+              });
+              this.router.navigate(['/registropago']);
+          },
+          (error) => {
+              console.error('Error al crear el registro:', error);
+              this.router.navigate(['/registro']); // Redirigir en caso de error
+          }
       );
     }
   }

@@ -42,6 +42,13 @@ export class DetallePagoService {
         return this.consultaDetalle(carnet).pipe(
             switchMap((resultado: any) => {
                 if (resultado === 200) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: '¡Cuidado!',
+                        text: 'Ya realizaste un detalle, ahora paga',
+                        confirmButtonColor: '#3366ff', // Azul
+                        confirmButtonText: 'Entendido'
+                      });
                     this.router.navigate(['/registropago']);
                     return EMPTY;
                 } else {
@@ -85,11 +92,12 @@ export class DetallePagoService {
             }),
             tap(() => {
                 Swal.fire({
-                    title: '¡Hola!',
-                    text: 'Tu registro es exitoso, sigue con los demás pasos',
                     icon: 'success',
-                    confirmButtonText: 'Ok'
-                });
+                    title: '¡Éxito!',
+                    text: 'Detalle correcto, revisa tu correo!',
+                    confirmButtonColor: '#33cc33', // Verde
+                    confirmButtonText: '¡Genial!'
+                  });
             })
         );
     }

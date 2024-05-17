@@ -46,8 +46,8 @@ export class AdministracionComponent {
             this.redirectToDashboard();
           },
           error => {
-            console.error('Error during login:', error);
-            Swal.fire('Login Failed', 'An error occurred during login', 'error');
+            console.error('Ocurrio un error:', error);
+            Swal.fire('Login fallido', 'Ocurrio un error al intentar logearse', 'error');
           }
         );
       }

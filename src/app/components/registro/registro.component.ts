@@ -43,7 +43,7 @@ export class RegistroComponent {
 
     //AQUI CREA MANDA AL SERVIDOR LOS CAMPOS, AL FORMULARIO LLAMADO "PERSONA"
     //Y DESPUES EN EL CARNET DEL FORMULARIO CARNET LE ASIGNARA LA CONCATENACION DEL CARNET
-      this.PersonasService.crear({...persona,carnet:carnetCompleto})
+      this.personasService.crear({...persona,carnet:carnetCompleto})
       .subscribe(()=>{
         //SI TODO ESTA BIEN ENTONCES MUESTRA ESTE MENSAJE
         Swal.fire({
@@ -56,5 +56,3 @@ export class RegistroComponent {
       });  
     }
     }
-
-

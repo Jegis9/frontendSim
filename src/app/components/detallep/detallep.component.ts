@@ -19,13 +19,28 @@ export class DetallepComponent implements OnInit, AfterViewInit {
     return item.id;
 }
 ngAfterViewInit(): void {
-    // Inicializa el reCAPTCHA
-    setTimeout(() => {
-      window['grecaptcha'].render('tu-recaptcha-element', {
-        sitekey: '6LdDpt8pAAAAADLz_MpgfTqem-XnmTnuLgjJai4B'
-      });
-    }, 0);
+  // Inicializa el reCAPTCHA
+  setTimeout(() => {
+    window['grecaptcha'].render('tu-recaptcha-element', {
+      sitekey: '6LdDpt8pAAAAADLz_MpgfTqem-XnmTnuLgjJai4B'
+    });
+  }, 0);
+}
+
+verificarCaptcha(): boolean {
+  const response = window['grecaptcha'].getResponse();
+  if (!response) {
+    Swal.fire({
+      icon: 'warning',
+      title: '¡Cuidado!',
+      text: 'Primero debes de marcar ReCaptcha',
+      confirmButtonColor: '#3366ff',
+      confirmButtonText: 'Entendido'
+    });
+    return false;
   }
+  return true;
+}
 
 form!: FormGroup;
 merchandising: any[] = [];
@@ -51,7 +66,11 @@ ngOnInit(): void {
     });
 }
 
+
 create() {
+  if (!this.verificarCaptcha()) {
+    return;
+  }
     const carnet1 = this.form.get('carnet')?.value;
     const carnet2 = (document.getElementById('Carnet2') as HTMLInputElement)?.value || '';
     const carnet3 = (document.getElementById('Carnet3') as HTMLInputElement)?.value || '';

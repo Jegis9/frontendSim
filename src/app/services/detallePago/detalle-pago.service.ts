@@ -110,3 +110,5 @@ export class DetallePagoService {
         return this.http.get(`https://apisimposio.shop/Participante/DetallePagoByCarnet/${carnet}`);
     }
 }    
+
+

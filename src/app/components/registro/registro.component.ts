@@ -1,17 +1,31 @@
 import { AfterViewInit, Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { PersonasService } from '../../services/personas.service';
 import Swal from 'sweetalert2';
+import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
-export class RegistroComponent implements AfterViewInit{
-  constructor() {}
+export class RegistroComponent implements AfterViewInit {
+  form: FormGroup;
+  private router = inject(Router)
+  constructor(private fb: FormBuilder, private personasService: PersonasService) {
+    this.form = this.fb.group({
+      carnet1: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+      carnet2: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
+      carnet3: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(6)]],
+      nombres: ['', [Validators.required]],
+      apellidos: ['', [Validators.required]],
+      correo: ['', [Validators.required, Validators.email]],
+      fechaNacimiento: ['', [Validators.required]]
+    });
+  }
 
   ngAfterViewInit(): void {
     // Inicializa el reCAPTCHA
@@ -22,7 +36,6 @@ export class RegistroComponent implements AfterViewInit{
     }, 0);
   }
 
-  /*VERIFICA CAPTCHA INICIO*/
   verificarCaptcha(): boolean {
     const response = window['grecaptcha'].getResponse();
     if (!response) {
@@ -30,62 +43,39 @@ export class RegistroComponent implements AfterViewInit{
         icon: 'warning',
         title: '¡Cuidado!',
         text: 'Primero debes de marcar ReCaptcha',
-        confirmButtonColor: '#3366ff', 
+        confirmButtonColor: '#3366ff',
         confirmButtonText: 'Entendido'
       });
       return false;
     }
     return true;
   }
-    /*VERIFICA CAPTCHA FIN*/
 
-  private fb = inject(FormBuilder);
-  private PersonasService = inject(PersonasService);
+  create() {
+    if (!this.verificarCaptcha()) {
+      return;
+    }
 
+    if (this.form.invalid) {
+      return;
+    }
 
-  //ESTE ES EL FORMULARIO QUE RECIBIRA LOS DATOS
-  form = this.fb.group(
-    {
-      
-      carnet: [''],
-      nombres:['', [Validators.required]],
-      apellidos:['', [Validators.required]],
-      correo:['', [Validators.required]],
-      fechaNacimiento:['', [Validators.required]]
+    const persona = this.form.value;
+    const carnet1 = this.form.get('carnet1')?.value;
+    const carnet2 = this.form.get('carnet2')?.value;
+    const carnet3 = this.form.get('carnet3')?.value;
+
+    const carnetCompleto = `${carnet1}-${carnet2}-${carnet3}`;
+
+    this.personasService.crear({ ...persona, carnet: carnetCompleto }).subscribe(() => {
+      Swal.fire({
+        title: '¡Hola!',
+        text: 'Tu registro es exitoso, sigue con los demás pasos',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      }).then(() => {
+        this.router.navigate(['/detalle']); // Usa this.router aquí
+      });
     });
-
-    
-    //INPUTS DEL CARNET 
-    create (){
-        /*VERIFICA CAPTCHA INICIO ANTES*/
-      if (!this.verificarCaptcha()) {
-        return;
-      }
-        /*VERIFICA CAPTCHA INICIO ANTES*/
-
-
-//AL MOMMENTO DE CREAR LOS DATOS, TOMA LOS TRES DATOS DE LOS TRES
-    
-      const persona = this.form.value;
-      const carnet1 = this.form.get('carnet')?.value;
-      const carnet2 = (document.getElementById('Carnet2') as HTMLInputElement)?.value || '';
-      const carnet3 = (document.getElementById('Carnet3') as HTMLInputElement)?.value || '';
-    //CONCATENACION DE LOS TRES CAMPOS
-      const carnetCompleto = `${carnet1}-${carnet2}-${carnet3}`;
-
-
-    //AQUI CREA MANDA AL SERVIDOR LOS CAMPOS, AL FORMULARIO LLAMADO "PERSONA"
-    //Y DESPUES EN EL CARNET DEL FORMULARIO CARNET LE ASIGNARA LA CONCATENACION DEL CARNET
-      this.PersonasService.crear({...persona,carnet:carnetCompleto})
-      .subscribe(()=>{
-        //SI TODO ESTA BIEN ENTONCES MUESTRA ESTE MENSAJE
-        Swal.fire({
-          title: '¡Hola!',
-          text: 'Tu registro es existoso, sigue con los demas pasos',
-          icon: 'success',
-          confirmButtonText: 'Ok'
-        });
-      
-      });  
-    }
-    }
+  }
+}

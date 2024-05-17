@@ -17,37 +17,6 @@ export class PersonasService {
 
 
 
-  create(carnet: string, formData: any): Observable<any> {
-    console.log("Datos del formulario:", formData);
-    return this.consultaRegistro(carnet).pipe(
-      switchMap((resultado: any) => {
-        if (resultado.status === 200) {
-          Swal.fire({
-            icon: 'warning',
-            title: '¡Cuidado!',
-            text: 'Ya realizaste hay un registro con este carnet, compra tu producto',
-            confirmButtonColor: '#3366ff', // Azul
-            confirmButtonText: 'Entendido'
-          });
-          return EMPTY;
-        } else {
-          return this.crear(formData);
-        }
-      }),
-      catchError((error: any) => {
-        if (error.status === 404) {
-          console.log("Datos para agregar detalle:", carnet, formData);
-          return this.crear(formData);
-        } else {
-          console.error('Error en la solicitud:', error);
-          return EMPTY;
-        }
-      })
-    );
-  }
-  
-
-  
   list(){
     
     return this.http.get('https://apisimposio.shop/Participante/Get');

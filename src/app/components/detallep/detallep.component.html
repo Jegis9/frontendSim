@@ -1,71 +1,76 @@
 <form [formGroup]="form" (ngSubmit)="create()">
     <div class="row mt-0">
-        <div class="col-md-12 ">
-            <div class="logo">
-                <img src="assets/Image/logoUMG.png" alt="Logo SIM'24">
-            </div>
-            <h4 >Detalle de pago</h4>
-            <p>A continuacion selecciona tus productos y genera boleta y registro de pago. </p>
+      <div class="col-md-12">
+        <div class="logo">
+          <img src="assets/Image/logoUMG.png" alt="Logo SIM'24">
         </div>
+        <h4>Detalle de pago</h4>
+        <p>A continuación selecciona tus productos y genera boleta y registro de pago.</p>
+      </div>
+    </div>
+    <hr>
+    <label for="exampleInputCarnet" class="col-sm-2 col-form-label">Carné</label>
+    <div class="mb-3 row">
+      <div class="col-sm-4">
+        <input type="text" class="form-control form-control-sm text-center" id="Carnet1" formControlName="carnet1">
+        <div *ngIf="form.get('carnet1')?.invalid && form.get('carnet1')?.touched" class="text-danger">
+          Carnet 1 es requerido y debe tener 4 dígitos.
         </div>
-        <hr>
-        <label for="exampleInputCarnet" class="col-sm-2 col-form-label">Carné</label>
-        <div class="mb-3 row">
-            <div class="col-sm-4">
-                <input type="text" class="form-control form-control-sm text-center" id="Carnet1" formControlName="carnet">
-            </div>
-            <div class="col-sm-4">
-                <input type="text" class="form-control form-control-sm text-center" id="Carnet2">
-            </div>
-            <div class="col-sm-4">
-                <input type="text" class="form-control form-control-sm text-center" id="Carnet3">
-            </div>
-            </div>
-        <h4>Merchadising</h4>
-        <div class="mb-3">  
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Imagen</th>
-                        <th>Cantidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <ng-container *ngFor="let item of merchandising; trackBy: trackByFn">
-                        <tr>
-                            <td>{{ item.id }}</td>
-                            <td>{{ item.nombre }}</td>
-                            <td  >{{ item.precio }}</td>
-                            <td><img [src]="item.imagen" alt=""></td>
-                            <td>
-                                <input *ngIf="item.nombre === 'Playera UMG'" type="number" id="cantidad-{{item.id}}" class="playeraInput" min="1" max="10" value="1" readonly>
-                                <input *ngIf="item.nombre !== 'Playera UMG'" type="number" id="cantidad-{{item.id}}" min="1" max="10" value="0">
-                                <ng-container *ngIf="item.nombre === 'Playera UMG'">
-                                    <select id="talla-{{item.id}}" formControlName="talla">
-                                        <option value="">Selecciona una talla</option>
-                                        <option *ngFor="let talla of item.opciones" [value]="talla">{{ talla }}</option>
-                                      </select>
-                                      
-                                </ng-container>
-                            </td>
-                            
-                            
-                        </tr>
-                    </ng-container>
-
-                </tbody>
-            </table>
-            
+      </div>
+      <div class="col-sm-4">
+        <input type="text" class="form-control form-control-sm text-center" id="Carnet2" formControlName="carnet2">
+        <div *ngIf="form.get('carnet2')?.invalid && form.get('carnet2')?.touched" class="text-danger">
+          Carnet 2 es requerido y debe tener 2 dígitos.
         </div>
-
-        
+      </div>
+      <div class="col-sm-4">
+        <input type="text" class="form-control form-control-sm text-center" id="Carnet3" formControlName="carnet3">
+        <div *ngIf="form.get('carnet3')?.invalid && form.get('carnet3')?.touched" class="text-danger">
+          Carnet 3 es requerido y debe tener entre 3 y 6 dígitos.
+        </div>
+      </div>
+    </div>
+  
+    <h4>Merchandising</h4>
+    <div class="mb-3">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+            <th>Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let item of merchandising; trackBy: trackByFn">
+            <tr>
+              <td>{{ item.id }}</td>
+              <td>{{ item.nombre }}</td>
+              <td>{{ item.precio }}</td>
+              <td><img [src]="item.imagen" alt=""></td>
+              <td>
+                <input *ngIf="item.nombre === 'Playera UMG'" type="number" id="cantidad-{{item.id}}" class="playeraInput" min="1" max="10" value="1" readonly>
+                <input *ngIf="item.nombre !== 'Playera UMG'" type="number" id="cantidad-{{item.id}}" min="1" max="10" [formControlName]="'cantidad-' + item.id">
+                <ng-container *ngIf="item.nombre === 'Playera UMG'">
+                  <select id="talla-{{item.id}}" [formControlName]="'talla-' + item.id">
+                    <option value="">Selecciona una talla</option>
+                    <option *ngFor="let talla of item.opciones" [value]="talla">{{ talla }}</option>
+                  </select>
+                  <div *ngIf="form.get('talla-' + item.id)?.invalid && form.get('talla-' + item.id)?.touched" class="text-danger">
+                    Selecciona una talla.
+                  </div>
+                </ng-container>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  
     <div class="mb-3 text-center">
       <button type="submit" class="btn" [ngClass]="{'btn-danger': form.invalid, 'btn-success': !form.invalid}" [disabled]="form.invalid">Generar detalle</button>
     </div>
   </form>
-  
-  
   

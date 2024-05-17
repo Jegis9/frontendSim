@@ -11,4 +11,9 @@ export class PagosService {
   list(){
     return this.http.get('https://apisimposio.shop/Participante/GetPagos')
   }
+
+  aceptarPago(idPago: number, carnet: string){
+    let confirmar = `https://apisimposio.shop/Participante/PagoVerificado/${idPago}/${carnet}`
+    return this.http.post(confirmar, {})
+  }
 }

@@ -22,6 +22,15 @@ export class PersonasService {
     return this.http.get('https://apisimposio.shop/Participante/Get');
   }
 
+  listAsistencia(){
+    
+    return this.http.get('https://apisimposio.shop/Participante/GetAsistencia');
+  }
+
+  enviarCertificados(){
+    
+    return this.http.post('https://apisimposio.shop/Participante/SendCertificate', {});
+  }
 
   consultaRegistro(carnet: string): Observable<any> {
     return this.http.get(`https://apisimposio.shop/Participante/GetByCarnet/${carnet}`);

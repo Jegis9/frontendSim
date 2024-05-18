@@ -5,101 +5,57 @@
     <h1>Pagos Realizados</h1>
     <div class="container-table">
       <div class="table-wrapper">
-          <table class="table table-hover">
-              <thead class="table-header">
-                  <tr>
-                      <th scope="col">ID DETALLE</th>
-                      <th scope="col">CARNET</th>
-                      <th scope="col">MERCHANDISING</th>
-                      <th scope="col">CANTIDAD</th>
-                      <th scope="col">TOTAL</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>1</td>
-                      <td>4546546464</td>
-                      <td>PLAYERA</td>
-                      <td>1</td>
-                      <td>Q.100</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>4546546464</td>
-                    <td>PLAYERA</td>
-                    <td>1</td>
-                    <td>Q.100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>4546546464</td>
-                  <td>PLAYERA</td>
-                  <td>1</td>
-                  <td>Q.100</td>
-              </tr>
+        <table class="table table-hover">
+          <thead class="table-header">
               <tr>
-                <td>1</td>
-                <td>4546546464</td>
-                <td>PLAYERA</td>
-                <td>1</td>
-                <td>Q.100</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>4546546464</td>
-              <td>PLAYERA</td>
-              <td>1</td>
-              <td>Q.100</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>4546546464</td>
-            <td>PLAYERA</td>
-            <td>1</td>
-            <td>Q.100</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>4546546464</td>
-          <td>PLAYERA</td>
-          <td>1</td>
-          <td>Q.100</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>4546546464</td>
-        <td>PLAYERA</td>
-        <td>1</td>
-        <td>Q.100</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>4546546464</td>
-      <td>PLAYERA</td>
-      <td>1</td>
-      <td>Q.100</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>4546546464</td>
-    <td>PLAYERA</td>
-    <td>1</td>
-    <td>Q.100</td>
-</tr>
-<tr>
-  <td>1</td>
-  <td>4546546464</td>
-  <td>PLAYERA</td>
-  <td>1</td>
-  <td>Q.100</td>
-</tr>
-    
-                  <!-- Añade más filas aquí según sea necesario -->
-              </tbody>
-          </table>
+                  <th scope="col">ID PAGO</th>
+                  <th scope="col">CARNET</th>
+                  <th scope="col">NOMBRE</th>
+                  <th scope="col">APELLIDO</th>
+                  <th scope="col">MONTO A PAGAR</th>
+                  <th scope="col">FECHA Y HORA</th>
+                  <th scope="col" >OPCION</th>
+              </tr>
+          </thead>
+          <tbody>
+              @for (item of pagos; track item.id) {
+                  <tr>
+                      <td>{{item.id}}</td>
+                      <td>{{item.participante.carnet}}</td>
+                      <td>{{item.participante.nombres}}</td>
+                      <td>{{item.participante.apellidos}}</td>
+                      <td>Q{{item.monto}}.00</td>
+                      <td>{{item.fechaHora}}</td>
+                      <td>
+                        <button type="button" class="btn btn-imagen" data-bs-toggle="modal" data-bs-target="#imagenModal" (click)="setImagenUrl(item.imagenBoleta)">
+                          Imagen
+                        </button>
+                      </td>
+                  </tr>
+              }
+          </tbody>
+      </table>
       </div>
   </div>
   
   
+  </div>
+</div>
+
+
+<div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imagenModalLabel">Imagen</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img [src]="imagenUrl" class="img-fluid" alt="Imagen de Boleta">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
   </div>
 </div>

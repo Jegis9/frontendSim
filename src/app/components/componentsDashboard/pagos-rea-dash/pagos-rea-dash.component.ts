@@ -10,6 +10,20 @@ import { PagosService } from '../../../services/pagos/pagos.service';
   styleUrl: './pagos-rea-dash.component.css'
 })
 export class PagosReaDashComponent {
+  pagos: any[] = [];
+  imagenUrl: string = '';
 
+  constructor(private pagosService: PagosService) { }
 
+  ngOnInit(): void {
+    this.pagosService.list()
+    .subscribe((pago: any) =>{
+      this.pagos = pago.filter((p: any) => p.verificado);
+
+    });
+  }
+
+  setImagenUrl(url: string): void {
+    this.imagenUrl = url;
+  }
 }

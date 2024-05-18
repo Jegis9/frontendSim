@@ -20,7 +20,7 @@ export class VerificarPaDashComponent implements OnInit{
   ngOnInit(): void {
       this.pagosService.list()
       .subscribe((pago: any) =>{
-        this.pagos = pago;
+        this.pagos = pago.filter((p: any) => !p.verificado);
   
       });
   }

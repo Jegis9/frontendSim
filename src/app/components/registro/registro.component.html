@@ -11,19 +11,19 @@
   <hr>
   <label for="exampleInputCarnet" class="col-sm-2 col-form-label">Carné</label>
   <div class="mb-3 row">
-    <div class="col-sm-4">
-      <input type="text" class="form-control form-control-sm text-center" id="Carnet1" formControlName="carnet1">
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <input type="text" class="form-control form-control-sm text-center" id="Carnet1" formControlName="carnet1" maxlength="4" (input)="autoFocusNext('Carnet2', 4)">
       <div *ngIf="form.get('carnet1')?.invalid && form.get('carnet1')?.touched" class="text-danger">
         El carnet debe tener 4 dígitos.
       </div>
     </div>
-    <div class="col-sm-4">
-      <input type="text" class="form-control form-control-sm text-center" id="Carnet2" formControlName="carnet2">
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <input type="text" class="form-control form-control-sm text-center" id="Carnet2" formControlName="carnet2" maxlength="2" (input)="autoFocusNext('Carnet3', 2)">
       <div *ngIf="form.get('carnet2')?.invalid && form.get('carnet2')?.touched" class="text-danger">
         El carnet debe tener 2 dígitos.
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 col-md-4 col-lg-4">
       <input type="text" class="form-control form-control-sm text-center" id="Carnet3" formControlName="carnet3">
       <div *ngIf="form.get('carnet3')?.invalid && form.get('carnet3')?.touched" class="text-danger">
         El carnet debe tener entre 3 y 6 dígitos.
@@ -45,24 +45,29 @@
     </div>
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail" class="form-label">Correo</label>
-    <input type="email" class="form-control form-control-sm text-center" id="exampleInputEmail" formControlName="correo">
+    <label for="exampleInputEmail1" class="form-label">Correo</label>
+    <input type="email" class="form-control form-control-sm text-center" id="exampleInputEmail1" formControlName="correo">
     <div *ngIf="form.get('correo')?.invalid && form.get('correo')?.touched" class="text-danger">
       Ingresa un correo válido.
     </div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-    <input type="date" class="form-control form-control-sm text-center" id="exampleInputFechaNacimiento" formControlName="fechaNacimiento">
-    <div *ngIf="form.get('fechaNacimiento')?.invalid && form.get('fechaNacimiento')?.touched" class="text-danger">
-      La fecha de nacimiento es requerida.
+    <div *ngIf="form.get('correo')?.errors?.['emailDomain']" class="text-danger">
+      El correo debe pertenecer al dominio &#64;miumg.edu.gt
     </div>
   </div>
-
+  <div class="mb-3">
+    <label for="exampleInputEmail2" class="form-label">Confirmación de Correo</label>
+    <input type="email" class="form-control form-control-sm text-center" id="exampleInputEmail2" formControlName="confirmacionCorreo">
+    <div *ngIf="form.get('confirmacionCorreo')?.invalid && form.get('confirmacionCorreo')?.touched" class="text-danger">
+      Ingresa un correo válido.
+    </div>
+    <div *ngIf="form.errors?.['emailMismatch'] && form.get('confirmacionCorreo')?.touched" class="text-danger">
+      Los correos no coinciden.
+    </div>
+  </div>
   <div class="mb-3 text-center recaptcha-container">
     <div id="tu-recaptcha-element" class="g-recaptcha" data-sitekey="6LdDpt8pAAAAADLz_MpgfTqem-XnmTnuLgjJai4B"></div>
   </div>
   <div class="mb-3 text-center">
-    <button type="submit" class="btn btn-primary">Registrar</button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Registrar</button>
   </div>
 </form>

@@ -29,7 +29,7 @@ export class AsistenciaComponent {
     .subscribe(
       (response) => {
         Swal.fire('Certificados Enviados', 'Los Certificados se han enviado correctamente', 'success');
-        console.log(response);
+        //console.log(response);
       },
       (error) => {
         Swal.fire('Error', 'Ha ocurrido un error al enviar los certificados', 'error');

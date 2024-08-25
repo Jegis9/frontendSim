@@ -37,9 +37,9 @@ export class GraficasdashComponent implements OnInit {
       this.personasPorAno = this.agruparPorAno(personasList);
       
 
-      console.log('Total de personas en list:', this.totalPersonasList);
-      console.log('Total de personas en list1:', this.totalPersonasList1);
-      console.log('Personas por año de nacimiento:', this.personasPorAno);
+      //console.log('Total de personas en list:', this.totalPersonasList);
+      //console.log('Total de personas en list1:', this.totalPersonasList1);
+      //console.log('Personas por año de nacimiento:', this.personasPorAno);
 
       // Chart 2
       const data2 = {

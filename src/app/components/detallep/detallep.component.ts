@@ -60,10 +60,19 @@ ngOnInit(): void {
     this.form = this.fb.group({
         carnet: [''],
         idMerchandising: ['', [Validators.required]],
-        cantidad: ['', [Validators.required]],
         opcion: ['', [Validators.required]],
         talla: ['']
     });
+}
+
+autoFocusNext(nextElementId: string, maxLength: number) {
+  const currentElement = document.activeElement as HTMLInputElement;
+  if (currentElement.value.length >= maxLength) {
+    const nextElement = document.getElementById(nextElementId) as HTMLInputElement;
+    if (nextElement) {
+      nextElement.focus();
+    }
+  }
 }
 
 
@@ -81,7 +90,7 @@ create() {
             carnet: carnetCompleto,
             merchandising: this.merchandising.map(item => ({
                 id: item.id,
-                cantidad: (document.getElementById(`cantidad-${item.id}`) as HTMLInputElement)?.value || '',
+                cantidad: 1,
                 talla: (document.getElementById(`talla-${item.id}`) as HTMLSelectElement)?.value || '',
                 precio: item.precio
             })).filter(item => Number(item.cantidad) >= 1)

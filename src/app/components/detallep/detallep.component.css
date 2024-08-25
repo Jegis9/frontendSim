@@ -4,9 +4,9 @@
     align-items: center; /* Centra verticalmente */
   }
   .logo img {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    max-width: 20%; /* Ajusta el tamaño máximo de la imagen para que se ajuste al contenedor */
+    margin-top: 2%;
+    margin-bottom: 0%;
+    max-width: 140%; /* Ajusta el tamaño máximo de la imagen para que se ajuste al contenedor */
     height: auto; /* Mantiene la proporción de aspecto de la imagen */
   }
 
@@ -67,7 +67,17 @@ hr{
   form {
       width: 95%;
   }
+
+  .mb-3.row .col-sm-4 {
+    flex: 0 0 calc(33.33% - 10px); /* 33.33% del contenedor menos un margen */
+    max-width: calc(33.33% - 10px);
+  }
+  .mb-3.row .col-sm-4 input {
+    width: 100%;
+  }
 }
+
+
 
 .btn-danger {
   background-color: red;

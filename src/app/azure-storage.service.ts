@@ -7,7 +7,7 @@ import { BlobServiceClient, ContainerClient } from "@azure/storage-blob";
 export class AzureStorageService {
 
   containerName = "pagos";
-  private accountName = "blobsimposio";
+  private accountName = "simposio";
 
   constructor() {}
 

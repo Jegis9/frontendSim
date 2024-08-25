@@ -37,13 +37,16 @@ export class AdministracionComponent {
             const { colaborador, token } = response;
   
             // Almacenar el JWT en localStorage
-            localStorage.setItem('token', token);
+            if (typeof localStorage !== 'undefined') {
+              localStorage.setItem('token', token);
   
-            // Manejar los datos del colaborador si es necesario
-            console.log('Colaborador:', colaborador);
-  
-            Swal.fire('¡Bienvenido!', 'Iniciaste sesión correctamente', 'success');
-            this.redirectToDashboard();
+              // Manejar los datos del colaborador si es necesario
+              //console.log('Colaborador:', colaborador);
+    
+              Swal.fire('¡Bienvenido!', 'Iniciaste sesión correctamente', 'success');
+              this.redirectToDashboard();
+            }
+            
           },
           error => {
             console.error('Ocurrio un error:', error);

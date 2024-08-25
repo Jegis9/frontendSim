@@ -21,7 +21,7 @@ ngOnInit(): void {
     this.personasService.list()
     .subscribe((persona: any) =>{
       this.personas = persona;
-      console.log("aqui debe de aparecer el total",persona.length)
+      //console.log("aqui debe de aparecer el total",persona.length)
     });
     
 }

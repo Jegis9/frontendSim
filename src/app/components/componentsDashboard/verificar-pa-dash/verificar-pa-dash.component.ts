@@ -29,6 +29,7 @@ export class VerificarPaDashComponent implements OnInit{
     this.pagosService.aceptarPago(idPago, carnet)
     .subscribe(
       (response) => {
+        this.pagos = this.pagos.filter(pago => pago.id !== idPago);
         Swal.fire('Pago Verificado', 'El pago ha sido Verificado exitosamente', 'success');
       },
       (error) => {

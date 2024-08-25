@@ -5,10 +5,10 @@
   }
 
 .logo img {
-margin-top: 10px;
-margin-bottom: 15px;
-max-width: 30%; /* Ajusta el tamaño máximo de la imagen para que se ajuste al contenedor */
-height: auto; /* Mantiene la proporción de aspecto de la imagen */
+    margin-top: 2%;
+    margin-bottom: 2%;
+    max-width: 55%; /* Ajusta el tamaño máximo de la imagen para que se ajuste al contenedor */
+    height: auto; /* Mantiene la proporción de aspecto de la imagen */
 }
 
 .container{

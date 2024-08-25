@@ -25,6 +25,17 @@ export class RegistropagoComponent implements AfterViewInit{
       });
     }, 0);
   }
+
+  autoFocusNext(nextElementId: string, maxLength: number) {
+    const currentElement = document.activeElement as HTMLInputElement;
+    if (currentElement.value.length >= maxLength) {
+      const nextElement = document.getElementById(nextElementId) as HTMLInputElement;
+      if (nextElement) {
+        nextElement.focus();
+      }
+    }
+  }
+
     /*VERIFICA CAPTCHA INICIO*/
     verificarCaptcha(): boolean {
       const response = window['grecaptcha'].getResponse();
@@ -42,7 +53,7 @@ export class RegistropagoComponent implements AfterViewInit{
     }
       /*VERIFICA CAPTCHA FIN*/
 
-  private sasToken  = "sp=racwdli&st=2024-05-16T01:04:23Z&se=2024-05-28T09:04:23Z&sv=2022-11-02&sr=c&sig=0qsSg9C4TOJOUB7bNf6Rk2OO77tfwI8GXsvCfdBiyug%3D";
+  private sasToken  = "sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacuptfx&se=2024-11-01T04:44:46Z&st=2024-07-31T20:44:46Z&sip=0.0.0.0-255.255.255.255&spr=https&sig=zNe3cH52M2iY9xrF1wU0Nz20onxDzbOWjHuWc5zf67k%3D";
   selectedFile: File | null = null;
   detallePagoId: number = 0;
   registroForm = new FormGroup({
@@ -59,13 +70,16 @@ export class RegistropagoComponent implements AfterViewInit{
     private pagoService: AddPagoService,
   ) { }
 
-  async onSubmit() {
+  async create() {
     
+    //console.log("arriba de la validacion");
         /*VERIFICA CAPTCHA INICIO ANTES*/
         if (!this.verificarCaptcha()) {
           return;
         }
           /*VERIFICA CAPTCHA INICIO ANTES*/
+
+          //console.log("debajo de la validacion");
 
     if(this.registroForm.valid && this.selectedFile && this.validateFile(this.selectedFile)){
       const carnet1 = this.registroForm.get('carnet1')?.value;
@@ -75,12 +89,16 @@ export class RegistropagoComponent implements AfterViewInit{
       const fechaHora = fechahoraControl ? this.formatDate(fechahoraControl) : '';
       const carnetCompleto = `${carnet1}-${carnet2}-${carnet3}`;
 
+      //console.log("Entre al IF");
+
 
       const detallePagoId = await this.obtenerDetalle(carnetCompleto);
       if (detallePagoId === 0 || detallePagoId === null) {
         Swal.fire('Error', 'Usted no Ha registrado su detalle de pago', 'error');
         return;
       }
+
+      //console.log("encontro el detalle de pago");
 
       const pagoExiste = await this.verificarPago(detallePagoId);
 
@@ -92,23 +110,26 @@ export class RegistropagoComponent implements AfterViewInit{
 
       try {
         this.subirImagen(this.selectedFile, carnetCompleto);
+        //Swal.fire('Error', 'si se subio la imagen', 'error');
       } catch (error) {
           console.error('Error during file upload:', error);
       }
 
-      const imageUrl = `https://blobsimposio.blob.core.windows.net/pagos/${carnetCompleto}${this.selectedFile?.name}`;
+      const imageUrl = `https://simposio.blob.core.windows.net/pagos/${carnetCompleto}${this.selectedFile?.name}`;
       this.pagoService.crear(carnetCompleto, detallePagoId, imageUrl, fechaHora).subscribe(
         response => {
-          console.log('Pago registrado:', response);
+          //console.log('Pago registrado:', response);
           Swal.fire('Pago registrado', 'El pago ha sido registrado exitosamente', 'success');
         },
         error => {
-          console.error('Error al registrar pago:', error);
+          //console.error('Error al registrar pago:', error);
           Swal.fire('Error', 'Ha ocurrido un error al registrar el pago', 'error');
         }
       );
 
     }
+
+    console.log("NO al IF");
   }
 
   obtenerDetalle(carnet: string): Promise<number> {
